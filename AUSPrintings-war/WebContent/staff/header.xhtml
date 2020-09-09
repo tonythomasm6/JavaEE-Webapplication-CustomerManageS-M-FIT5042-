@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+<h:outputStylesheet library = "css" name = "headerStyle.css" /> 
+
+
+</h:head> 
+<body> 
+
+<div class="header">
+ 
+  <div class="header-left">
+	 <a class="active" href="../../faces/staff/home.xhtml">Home</a>
+	</div>
+
+	<div class="header-center">
+		<label> welcome #{headerBean.loginUserName}</label>
+	</div>	
+	
+  <div class="header-right">
+    <a href="../../faces/common/logout.xhtml">Logout</a>
+  </div>
+</div>
+
+
+
+<h:form>
+
+<br />	
+	
+
+</h:form>
+
+	<ui:insert name="PageTitle">Default Title</ui:insert>
+	<ui:insert name="content">Default content</ui:insert>
+
+</body> 
+	
+	
+</html>
