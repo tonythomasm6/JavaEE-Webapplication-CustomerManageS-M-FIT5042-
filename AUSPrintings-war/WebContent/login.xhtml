@@ -6,14 +6,28 @@
 
 <h:head>
 	<title>User Authentication</title>
+	
+	<script>
+	function myFunction() {
+		  var x = document.getElementById("myInput");
+		  if (x.type === "password") {
+		    x.type = "text";
+		  } else {
+		    x.type = "password";
+		  }
+		}
+	</script>
 </h:head>
 <h:body>
 	<h1>User Authentication</h1>
 	<form method="post" action="j_security_check">
-		<label for="j_username">Username:</label> <input type="text"
-			name="j_username" /> <label for="j_password">Password:</label> <input
-			type="password" name="j_password" /> <input type="submit"
-			value="Submit" />
+		<label for="j_username">Username:</label> 
+		<input type="text" name="j_username" /> 
+		<label for="j_password">Password:</label> 
+		<input type="password" id="myInput" name="j_password" />
+		<input type="checkbox" onclick="myFunction()">Show Password</input>
+		<br />
+		<input type="submit" value="Submit" />
 	</form>
 </h:body>
 

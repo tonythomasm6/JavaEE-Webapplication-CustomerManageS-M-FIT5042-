@@ -55,6 +55,7 @@
 			<web-resource-name>WebResource</web-resource-name>
 			<url-pattern>/staff/*</url-pattern>
 			<url-pattern>/faces/staff/*</url-pattern>
+			<url-pattern>/faces/faces/staff/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<description>Staff</description>

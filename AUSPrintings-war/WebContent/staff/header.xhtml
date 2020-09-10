@@ -12,18 +12,31 @@
 <body> 
 
 <div class="header">
+ <table  style="width:100%">
  
-  <div class="header-left">
+ <tr><td>
+ <div class="header-left">
 	 <a class="active" href="../../faces/staff/home.xhtml">Home</a>
 	</div>
+</td><td>
+	
 
 	<div class="header-center">
 		<label> welcome #{headerBean.loginUserName}</label>
 	</div>	
-	
+</td><td>
   <div class="header-right">
-    <a href="../../faces/common/logout.xhtml">Logout</a>
+    <a href="../logout.xhtml">Logout</a> 
+	
+	<!--  <h:outputLink value="../logout.xhtml"> Logout houtput faces
+	</h:outputLink>-->
+	
   </div>
+  
+  </td>	
+  </tr>
+  </table>
+
 </div>
 
 

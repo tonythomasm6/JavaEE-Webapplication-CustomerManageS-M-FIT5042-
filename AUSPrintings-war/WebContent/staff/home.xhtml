@@ -5,33 +5,34 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <ui:composition template="header.xhtml">
-<ui:define name="PageTitle"><h>Staff page</h></ui:define>
+<ui:define name="PageTitle"><h>#{staffHomeBean.loggedUserName}</h></ui:define>
 <ui:define name="content">
 
-<body> 
+<h:body>
+<h:form>
 
 
-	<h:outputLink value="faces/customer/ViewCustomers.xhtml">
-		Customer Management
-	</h:outputLink>
+	<h:link value="Manage Customers" outcome="faces/customer/ManageCustomers.xhtml"/>
+	 <a href="../customer/ManageCustomers.xhtml">Customer Management</a> 
 	
 	<br />
 	
-	<h:outputLink value="faces/customerContact/ViewCustomerContacts.xhtml">
+	<!--<h:outputLink value="faces/customerContact/ViewCustomerContacts.xhtml">
 		Customer Contact Management
-	</h:outputLink>
+	</h:outputLink> -->
 	
 	<br />
 	
+	<!--
 	<h:outputLink value="faces/ChangePassword.xhtml">
 		Change Password
-	</h:outputLink>
+	</h:outputLink> -->
 	
 	<br />
 	
 
-
-</body> 
+</h:form>
+</h:body>
 
 </ui:define>
 </ui:composition>
