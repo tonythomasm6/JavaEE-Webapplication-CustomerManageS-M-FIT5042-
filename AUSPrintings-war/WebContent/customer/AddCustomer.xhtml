@@ -111,13 +111,18 @@
 					<h:outputLabel for="industrytype " value="industry to be added"/>
 				</td>
 				<td>
-					<!--   <h:inputText id="state" value="#{customerBean.address.state}"/>-->
+					
+					<h:selectOneMenu value="#{customerBean.typeId}">
+							<f:selectItems value="#{customerBean.allIndustryTypes}" var="industryType"
+								itemValue="#{industryType.typeId}" itemLabel="#{industryType.industryType}" />
+					</h:selectOneMenu>
+
 				</td>
 			</tr>
 			
 			
 			<tr><td>
-				 <h:commandButton id="submit" value="Submit" action="#{customerApplication.addCustomer(customerBean)}" class="btn btn-primary" />
+				 <h:commandButton id="submit" value="Submit" action="#{customerController.addCustomer(customerBean)}" class="btn btn-primary" />
 			</td></tr>
 			
 		</table>

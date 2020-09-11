@@ -2,6 +2,8 @@ package com.managedBean.staff;
 
 import java.io.Serializable;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.el.ELContext;
@@ -12,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import com.entities.Agent;
+import com.entities.IndustryType;
 import com.managedBeans.common.ManagedBeanRepository;
 
 
@@ -20,15 +23,7 @@ import com.managedBeans.common.ManagedBeanRepository;
 public class StaffHomeBean implements Serializable{
 
 	private String loggedUserName;
-	private String headerURL="../staff/header.xhtml";
 	
-	public String getHeaderURL() {
-		return headerURL;
-	}
-
-	public void setHeaderURL(String headerURL) {
-		this.headerURL = headerURL;
-	}
 
 	public String getLoggedUserName() {
 		return loggedUserName;
@@ -54,6 +49,8 @@ public class StaffHomeBean implements Serializable{
 	        
 		 getLoggedAgentDetails(loggedUserName);
 		 
+		 //getAllIndustryTypes();
+		 
 		 ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		 Map<String, Object> sessionMap = externalContext.getSessionMap();
 		 sessionMap.put("loggedUserName", loggedUserName);
@@ -69,4 +66,12 @@ public class StaffHomeBean implements Serializable{
 		
 		
 	}
+	
+	/*
+	public void getAllIndustryTypes() {
+		List<IndustryType> allIndustryTypes = managedBeanRepository.getAllIndustryTypes();
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("allIndustryTypes", allIndustryTypes);
+	} */
 }

@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import com.entities.Agent;
 import com.entities.Customer;
+import com.entities.IndustryType;
 import com.repository.AgentRepository;
 import com.repository.CustomerRepository;
 
@@ -36,6 +37,11 @@ public class ManagedBeanRepository implements Serializable {
 	
 	public void addCustomer(Customer customer) {
 		customerRepository.addCustomer(customer);
+	}
+
+	public List<IndustryType> getAllIndustryTypes() {
+		List<IndustryType> allIndustryTypes = agentRepository.getAllIndustryTypes();
+		return allIndustryTypes;
 	}
 
 	
