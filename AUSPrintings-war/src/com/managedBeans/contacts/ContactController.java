@@ -13,7 +13,7 @@ import com.managedBeans.common.ManagedBeanRepository;
 
 @Named
 @SessionScoped
-public class ContactsController implements Serializable {
+public class ContactController implements Serializable {
 	/*
 	@ManagedProperty(value = "#{managedBeanRepository}")
 	private ManagedBeanRepository managedBeanRepository;

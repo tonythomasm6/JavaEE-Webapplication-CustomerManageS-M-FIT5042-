@@ -19,7 +19,7 @@ import com.managedBeans.common.ManagedBeanRepository;
 
 @RequestScoped
 @Named
-public class ContactsBean implements Serializable {
+public class ContactBean implements Serializable {
 
 	private int customerContactId;
 	private String firstName;
@@ -42,7 +42,7 @@ public class ContactsBean implements Serializable {
 	@ManagedProperty(value = "#{managedBeanRepository}")
 	private ManagedBeanRepository managedBeanRepository;
 
-	public ContactsBean() {
+	public ContactBean() {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		 managedBeanRepository = (ManagedBeanRepository) FacesContext.getCurrentInstance().getApplication()
 	                .getELResolver().getValue(elContext, null, "managedBeanRepository");
@@ -118,7 +118,7 @@ public class ContactsBean implements Serializable {
 	
 	
 
-	public void addContacts(ContactsBean contact) {
+	public void addContacts(ContactBean contact) {
 		CustomerContact customerContact = convertBeanToEntity(contact);
 		managedBeanRepository.addCustomerContact(customerContact);
 		
@@ -127,7 +127,7 @@ public class ContactsBean implements Serializable {
 		
 	}
 	
-	public CustomerContact convertBeanToEntity(ContactsBean contact) {
+	public CustomerContact convertBeanToEntity(ContactBean contact) {
 		
 		CustomerContact customerContact = new CustomerContact();
 		customerContact.setFirstName(contact.getFirstName());

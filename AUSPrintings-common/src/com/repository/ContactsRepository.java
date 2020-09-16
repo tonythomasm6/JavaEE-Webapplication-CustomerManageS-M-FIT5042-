@@ -10,4 +10,7 @@ public interface ContactsRepository {
 	
 	public void addCustomerContact(CustomerContact c);
 	
+	public CustomerContact getCustomerContactFromId(int contactId);
+	
+	public void editContact(CustomerContact c);
 }

@@ -71,4 +71,13 @@ public class ManagedBeanRepository implements Serializable {
 		contactsRepository.addCustomerContact(c);
 	}
 	
+	public CustomerContact getCustomerContactFromId(int contactId) {
+		CustomerContact contact = contactsRepository.getCustomerContactFromId(contactId);
+		return contact;
+	}
+	
+	public void editContact(CustomerContact c) {
+		contactsRepository.editContact(c);
+	}
+	
 }

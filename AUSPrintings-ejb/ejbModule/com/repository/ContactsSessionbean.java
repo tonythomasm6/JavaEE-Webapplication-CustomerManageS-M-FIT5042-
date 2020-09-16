@@ -36,4 +36,16 @@ public class ContactsSessionbean implements ContactsRepository{
 		
 	}
 
+	@Override
+	public CustomerContact getCustomerContactFromId(int contactId) {
+		CustomerContact contact = entityManager.find(CustomerContact.class, contactId);
+		return contact;
+	}
+
+	@Override
+	public void editContact(CustomerContact c) {
+		entityManager.merge(c);
+		
+	}
+
 }

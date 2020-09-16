@@ -1,11 +1,109 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
-<body> 
+<!-- 
+<h:head>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>
+</h:head> -->
 
-</body> 
+
+
+<ui:composition template="../staff/header.xhtml">
+<ui:define name="headerContents">
+	 <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</ui:define>
+	<ui:define name="PageTitle">
+		<h>Customer Details</h>
+	</ui:define>
+	<ui:define name="content">
+	
+
+<h:body>
+	<div class="container">
+		<h:form>
+			
+				<font style="color:red"><b>	<h:messages></h:messages> </b></font>
+			<br />
+			<table class="table table-bordered ">
+				<tr>
+					<td width="150" valign="top">ID:</td>
+
+					<td valign="bottom"><h:outputLabel id="customerId">#{contactDetailsBean.contact.customerContactId}</h:outputLabel>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td width="150" valign="top">First Name:</td>
+
+					<td valign="bottom"><h:outputLabel id="firstName">#{contactDetailsBean.contact.firstName}</h:outputLabel>
+					</td>
+				</tr>
+
+				<tr>
+					<td width="150" valign="top">Last Name:</td>
+
+					<td valign="bottom"><h:outputLabel id="lastName">#{contactDetailsBean.contact.lastName}</h:outputLabel>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td width="100" valign="top">Phone Number:</td>
+					<td valign="bottom"><h:inputText id="phoneNumber"
+							value="#{contactDetailsBean.contact.phoneNumber}" required="true"
+							validatorMessage="Please enter a Valid Phone Number"
+							requiredMessage="Please enter a Phone Number. "></h:inputText>
+							
+					<br/>
+							<h:message for="phoneNumber" class="#{!phoneNumber.valid ? 'label label-warning' : 'none'}" />
+					</td>
+				</tr>
+
+				<tr>
+					<td width="100" valign="top">Business Phone:</td>
+					<td valign="bottom">
+					<h:inputText id="businessPhone" value="#{contactDetailsBean.contact.businessPhone}" 
+						required="true" requiredMessage="Please enter businessPhone!" >
+					</h:inputText>
+					
+					<br/>
+							<h:message for="businessPhone" class="#{!businessPhone.valid ? 'label label-warning' : 'none'}" />
+							</td>
+				</tr>
+
+				<tr>
+					<td width="100" valign="top">Email:</td>
+					<td valign="bottom"><h:inputText id="email"
+							value="#{contactDetailsBean.contact.email}" required="true"
+							validatorMessage="Please enter a valid email."
+							requiredMessage="Please enter an email. "></h:inputText>
+							
+					<br/>
+							<h:message for="email" class="#{!email.valid ? 'label label-warning' : 'none'}" />
+					</td>
+				</tr>
+
+
+			</table>
+			
+			<h:commandButton id="save" value="Save"
+					action="#{contactDetailsBean.editContact(contactDetailsBean.contact)}"
+					class="btn btn-primary">
+					<f:param name="customerID"
+						value="#{customerDetailsBean.customer.customerId}" />
+				</h:commandButton>
+				
+			<h:link id="close" value="Close" outcome="/faces/customer/manageCustomers.xhtml"
+					class="btn btn-primary" />	
+			
+		</h:form>
+	</div>
+</h:body>
+	</ui:define>
+</ui:composition>
+
 </html>

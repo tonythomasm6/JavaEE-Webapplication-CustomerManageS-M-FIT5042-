@@ -18,7 +18,7 @@ import com.managedBeans.common.ManagedBeanRepository;
 
 @Named
 @RequestScoped
-public class manageContactsBean  implements Serializable{
+public class ManageContactBean  implements Serializable{
 	
 	private List<Customer> customers;
 	
@@ -56,7 +56,7 @@ public class manageContactsBean  implements Serializable{
 	@ManagedProperty(value = "#{managedBeanRepository}")
 	private ManagedBeanRepository managedBeanRepository;
 	
-	public manageContactsBean() {
+	public ManageContactBean() {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		 managedBeanRepository = (ManagedBeanRepository) FacesContext.getCurrentInstance().getApplication()
 	                .getELResolver().getValue(elContext, null, "managedBeanRepository");

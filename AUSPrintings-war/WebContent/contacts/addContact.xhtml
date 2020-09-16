@@ -30,7 +30,7 @@
 						<h:outputLabel for="firstName" value="First Name"/>
 					</td>
 					<td>
-						<h:inputText id="firstName" value="#{contactsBean.firstName}"
+						<h:inputText id="firstName" value="#{contactBean.firstName}"
 							required="true" requiredMessage="Please enter First Name!">
 						</h:inputText>
 						<br/>
@@ -43,7 +43,7 @@
 						<h:outputLabel for="lastName" value="Last Name" />
 					</td>
 					<td>
-						<h:inputText id="lastName" value="#{contactsBean.lastName}"
+						<h:inputText id="lastName" value="#{contactBean.lastName}"
 						required="true" requiredMessage="Please enter Last Name!">
 						</h:inputText>
 						<br/>
@@ -55,7 +55,7 @@
 						<h:outputLabel for="phoneNumber" value="Phone Number"/>
 					</td>
 					<td>
-						<h:inputText id="phoneNumber" value="#{contactsBean.phoneNumber}"
+						<h:inputText id="phoneNumber" value="#{contactBean.phoneNumber}"
 	  					required="true" requiredMessage="Please enter Phone Number!">
 						</h:inputText>
 						<br/>
@@ -67,7 +67,7 @@
 						<h:outputLabel for="businessPhone" value="Business phone"/>
 					</td>
 					<td>
-						<h:inputText id="businessPhone" value="#{contactsBean.businessPhone}"
+						<h:inputText id="businessPhone" value="#{contactBean.businessPhone}"
 						required="true" requiredMessage="Please enter Business Phone">
 						</h:inputText>
 						<br/>
@@ -79,7 +79,7 @@
 						<h:outputLabel for="email" value="Email"/>
 					</td>
 					<td>
-						<h:inputText id="email" value="#{contactsBean.email}" 
+						<h:inputText id="email" value="#{contactBean.email}" 
 							required="true" requiredMessage="Please enter the Eamil!" 						>
 						</h:inputText>
 						
@@ -94,8 +94,8 @@
 					</td>
 					<td>
 						
-						<h:selectOneMenu value="#{contactsBean.customerId}">
-								<f:selectItems value="#{contactsBean.customers}" var="customer"
+						<h:selectOneMenu value="#{contactBean.customerId}">
+								<f:selectItems value="#{contactBean.customers}" var="customer"
 									itemValue="#{customer.customerId}"
 									 itemLabel="#{customer.firstName} #{customer.lastName}" />
 						</h:selectOneMenu>
@@ -105,7 +105,7 @@
 				
 				
 				<tr><td>
-					 <h:commandButton id="submit" value="Submit" action="#{contactsBean.addContacts(contactsBean)}" class="btn btn-primary" />
+					 <h:commandButton id="submit" value="Submit" action="#{contactBean.addContacts(contactBean)}" class="btn btn-primary" />
 				</td></tr>
 				
 			</table>
