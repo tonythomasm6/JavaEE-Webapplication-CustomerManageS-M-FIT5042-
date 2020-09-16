@@ -1,0 +1,125 @@
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+	<html xmlns="http://www.w3.org/1999/xhtml"
+	      xmlns:ui="http://java.sun.com/jsf/facelets"
+	      xmlns:f="http://java.sun.com/jsf/core"
+	      xmlns:h="http://java.sun.com/jsf/html"
+	      xmlns:rich="http://richfaces.org/rich"> 
+	
+	
+	<ui:composition template="../staff/header.xhtml">
+	<ui:define name="headerContents">
+		
+		 <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	</ui:define>
+	
+	<ui:define name="PageTitle"><h><b>Add new Contact</b></h></ui:define>
+	<ui:define name="content">
+	
+	
+	
+	
+	<h:body> 
+	<div class="container">
+		<h:form id="addForm">
+		
+		
+			<table class="table table-bordered ">
+			<b>	<font style="color:red"></font> </b>
+				<tr>
+					<td>
+						<h:outputLabel for="firstName" value="First Name"/>
+					</td>
+					<td>
+						<h:inputText id="firstName" value="#{contactsBean.firstName}"
+							required="true" requiredMessage="Please enter First Name!">
+						</h:inputText>
+						<br/>
+								<h:message for="firstName" class="#{!firstName.valid ? 'label label-warning' : 'label-warning'}" />
+							
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel for="lastName" value="Last Name" />
+					</td>
+					<td>
+						<h:inputText id="lastName" value="#{contactsBean.lastName}"
+						required="true" requiredMessage="Please enter Last Name!">
+						</h:inputText>
+						<br/>
+								<h:message for="lastName" class="#{!lastName.valid ? 'label label-warning' : 'none'}" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel for="phoneNumber" value="Phone Number"/>
+					</td>
+					<td>
+						<h:inputText id="phoneNumber" value="#{contactsBean.phoneNumber}"
+	  					required="true" requiredMessage="Please enter Phone Number!">
+						</h:inputText>
+						<br/>
+								<h:message for="phoneNumber" class="#{!phoneNumber.valid ? 'label label-warning' : 'none'}" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel for="businessPhone" value="Business phone"/>
+					</td>
+					<td>
+						<h:inputText id="businessPhone" value="#{contactsBean.businessPhone}"
+						required="true" requiredMessage="Please enter Business Phone">
+						</h:inputText>
+						<br/>
+								<h:message for="businessPhone" class="#{!businessPhone.valid ? 'label label-warning' : 'none'}" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h:outputLabel for="email" value="Email"/>
+					</td>
+					<td>
+						<h:inputText id="email" value="#{contactsBean.email}" 
+							required="true" requiredMessage="Please enter the Eamil!" 						>
+						</h:inputText>
+						
+						<br/>
+								<h:message for="email" class="#{!email.valid ? 'label label-warning' : 'none'}" />
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<h:outputLabel for="customer " value="Customer responsible for Contact:"/>
+					</td>
+					<td>
+						
+						<h:selectOneMenu value="#{contactsBean.customerId}">
+								<f:selectItems value="#{contactsBean.customers}" var="customer"
+									itemValue="#{customer.customerId}"
+									 itemLabel="#{customer.firstName} #{customer.lastName}" />
+						</h:selectOneMenu>
+	
+					</td>
+				</tr>
+				
+				
+				<tr><td>
+					 <h:commandButton id="submit" value="Submit" action="#{contactsBean.addContacts(contactsBean)}" class="btn btn-primary" />
+				</td></tr>
+				
+			</table>
+			
+			
+			
+		</h:form>
+	</div>
+	</h:body> 
+	
+	
+	
+	
+	</ui:define>
+	</ui:composition>
+	
+	</html>

@@ -5,15 +5,35 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <ui:composition template="header.xhtml">
-<ui:define name="PageTitle"><h>#{staffHomeBean.loggedUserName}</h></ui:define>
+
+<ui:define name="headerContents">
+	 <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	 <!--  --><h:outputStylesheet library = "css" name = "headerStyle.css" /> 
+</ui:define>
+
+
+<ui:define name="PageTitle"><h>
+<!-- Input hidden field required to call staffHomebean to get staff login details -->
+	<input type="hidden" id="loggedUserName" name="loggedUserName" value="#{staffHomeBean.loggedUserName}"/>
+	</h></ui:define>
+	
+	
+	
 <ui:define name="content">
 
 <h:body>
 <h:form>
 
+<div class="header-center">
+	<h:link  class="btn btn-primary"  value="Manage Customers" outcome="/faces/customer/manageCustomers.xhtml"/>
+</div>
+	<br />
+	
+<div class="header-center">
+	<h:link  class="btn btn-primary"  value="Manage Customer Contacts" outcome="/faces/contacts/manageContacts.xhtml"/>
+</div>
+	<br />
 
-	<h:link value="Manage Customers" outcome="faces/customer/ManageCustomers.xhtml"/>
-	 <a href="../customer/ManageCustomers.xhtml">Customer Management</a> 
 	
 	<br />
 	

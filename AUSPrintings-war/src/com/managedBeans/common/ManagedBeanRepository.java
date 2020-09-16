@@ -10,8 +10,10 @@ import javax.inject.Named;
 
 import com.entities.Agent;
 import com.entities.Customer;
+import com.entities.CustomerContact;
 import com.entities.IndustryType;
 import com.repository.AgentRepository;
+import com.repository.ContactsRepository;
 import com.repository.CustomerRepository;
 
 @Named
@@ -23,6 +25,9 @@ public class ManagedBeanRepository implements Serializable {
 	
 	@EJB
 	CustomerRepository customerRepository;
+	
+	@EJB
+	ContactsRepository contactsRepository;
 	
 	public Agent getLoggedAgentDetails(String loggedUserName) {
 		Agent agent = agentRepository.getLoggedAgentDetails(loggedUserName);
@@ -44,5 +49,26 @@ public class ManagedBeanRepository implements Serializable {
 		return allIndustryTypes;
 	}
 
+	public Customer getCustomer(int customerId) {
+		Customer customer = customerRepository.getCustomer(customerId);
+		return customer;
+	}
+	
+	public void editCustomer(Customer c) {
+		customerRepository.editCustomer(c);
+	}
+	
+	public  void deleteCustomer(Customer customer) {
+		customerRepository.deleteCustomer(customer);
+	}
+	
+	public List<CustomerContact> getContactsForCustomer(int customerId){
+		List<CustomerContact> contacts = contactsRepository.getContactsForCustomer(customerId);
+		return contacts;
+	}
+	
+	public void addCustomerContact(CustomerContact c) {
+		contactsRepository.addCustomerContact(c);
+	}
 	
 }

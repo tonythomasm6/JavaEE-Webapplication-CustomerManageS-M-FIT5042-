@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.el.ELContext;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -28,11 +29,6 @@ public class CustomerController implements Serializable {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		managedBeanRepository = (ManagedBeanRepository) FacesContext.getCurrentInstance().getApplication()
 				.getELResolver().getValue(elContext, null, "managedBeanRepository");
-	}
-
-	public void addCustomer(CustomerBean customerBean) {
-		Customer customer = convertManagedBeantoEntity(customerBean);
-		managedBeanRepository.addCustomer(customer);
 	}
 
 	public Customer convertManagedBeantoEntity(CustomerBean customerManagedBean) {
@@ -60,44 +56,46 @@ public class CustomerController implements Serializable {
 		Agent agent = new Agent();
 		agent = (Agent) sessionMap.get("loggedAgent");
 		customer.setAgent(agent);
-		
-		
-		/**Getting industrytype details from the selected industry id**/
+
+		/** Getting industrytype details from the selected industry id **/
 		int typeId = customerManagedBean.getTypeId();
 		IndustryType industry = getIndustryTypeFromId(typeId);
 		customer.setIndustryType(industry);
-		
-		/*
-		 * IndustryType industry = new IndustryType();
-		 * industry.setTypeId(customerManagedBean.getTypeId());
-		 * industry.setIndustryType(customerManagedBean.getIndustryType());
-		 * industry.setDescription(customerManagedBean.getDescription());
-		 * 
-		 * customer.setIndustryType(industry);
-		 */
-		
-		
-		/*Address a2 = customer.getAddress();
-		customer.getAddress().setStreetNumber("20");
-		*/
-			
+
 		return customer;
 	}
-	
+
 	public IndustryType getIndustryTypeFromId(int typeId) {
-		//Getting all industryTypes
-		
+		// Getting all industryTypes
+
 		List<IndustryType> allIndustryTypes = managedBeanRepository.getAllIndustryTypes();
-		
-		for(IndustryType i : allIndustryTypes) {
-			if(i.getTypeId() == typeId) {
+
+		for (IndustryType i : allIndustryTypes) {
+			if (i.getTypeId() == typeId) {
 				return i;
 			}
 		}
 		return null;
-		
-		
-		
+
+	}
+
+	public void addCustomer(CustomerBean customerBean) {
+		Customer customer = convertManagedBeantoEntity(customerBean);
+		managedBeanRepository.addCustomer(customer);
+		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
+				new FacesMessage("New Customer added succesfully"));
+	}
+
+	public void editCustomer(Customer c) {
+		managedBeanRepository.editCustomer(c);
+		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
+				new FacesMessage("Changes saved succesfully"));
+	}
+
+	public void deleteCustomer(Customer customer) {
+		managedBeanRepository.deleteCustomer(customer);
+		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
+				new FacesMessage("Customer deleted succesfully"));
 	}
 
 }

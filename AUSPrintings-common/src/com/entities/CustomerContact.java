@@ -16,7 +16,7 @@ public class CustomerContact {
 	public static final String GET_ALL_QUERY_NAME = "CustomerContact.getAll";
 	
 	private int customerContactId;
-	private int firstName;
+	private String firstName;
 	private String lastName;
 	private String phoneNumber;
 	private String businessPhone;
@@ -32,10 +32,10 @@ public class CustomerContact {
 	public void setCustomerContactId(int customerContactId) {
 		this.customerContactId = customerContactId;
 	}
-	public int getFirstName() {
+	public String getFirstName() {
 		return firstName;
 	}
-	public void setFirstName(int firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 	public String getLastName() {

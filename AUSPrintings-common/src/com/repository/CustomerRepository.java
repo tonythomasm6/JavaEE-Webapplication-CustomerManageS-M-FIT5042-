@@ -10,4 +10,10 @@ public interface CustomerRepository {
 	public List<Customer> getCustomers(int agentId, String role);
 	
 	public void addCustomer(Customer customer);
+	
+	public Customer getCustomer(int customerId);
+	
+	public void editCustomer(Customer c);
+	
+	public void deleteCustomer(Customer customer);
 }

@@ -40,6 +40,30 @@ public class CustomerSessionBean implements CustomerRepository{
         entityManager.persist(customer);
 	}
 	
+	public Customer getCustomer( int customerId) {
+		Customer customer = new Customer();
+		customer = (Customer) entityManager.createQuery("SELECT c FROM Customer c where c.customerId =:cusId").setParameter("cusId", customerId).getSingleResult();
+		//customer = entityManager.find(Customer.class, customerId);
+		return customer;
+	}
+
+	@Override
+	public void editCustomer(Customer c) {
+		entityManager.merge(c);
+		
+	}
+
+	@Override
+	public void deleteCustomer(Customer customer) {
+
+		Customer c = entityManager.merge(customer);
+		entityManager.remove(c);
+		
+		//entityManager.remo
+		
+		
+		
+	}
 	
 
 }

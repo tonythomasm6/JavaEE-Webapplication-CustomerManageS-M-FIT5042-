@@ -26,10 +26,12 @@ public class AgentSessionBean implements AgentRepository{
 
 	@Override
 	public List<IndustryType> getAllIndustryTypes() {
-		IndustryType i = new IndustryType();
-		entityManager.refresh(i);
 		List<IndustryType> allIndustryTypes = entityManager.createNamedQuery(IndustryType.GET_ALL_QUERY_NAME).getResultList();
-		entityManager.refresh(allIndustryTypes);
+		/*Only if refreshed, updated values will be fetched*/
+		for(IndustryType i : allIndustryTypes) {
+			entityManager.refresh(i);
+		}
+		
 		return allIndustryTypes;
 	}
 

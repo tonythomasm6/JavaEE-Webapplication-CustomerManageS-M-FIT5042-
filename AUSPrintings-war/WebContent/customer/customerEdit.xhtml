@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<!-- 
+<h:head>
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>
+</h:head> -->
+
+
+
+<ui:composition template="../staff/header.xhtml">
+<ui:define name="headerContents">
+	 <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+</ui:define>
+	<ui:define name="PageTitle">
+		<h>Customer Details</h>
+	</ui:define>
+	<ui:define name="content">
+	
+
+<h:body>
+	<div class="container">
+		<h:form>
+			
+				<font style="color:red"><b>	<h:messages></h:messages> </b></font>
+			<br />
+			<table class="table table-bordered ">
+				<tr>
+					<td width="150" valign="top">ID:</td>
+
+					<td valign="bottom"><h:outputLabel id="customerId">#{customerDetailsBean.customer.customerId}</h:outputLabel>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td width="150" valign="top">First Name:</td>
+
+					<td valign="bottom"><h:outputLabel id="firstName">#{customerDetailsBean.customer.firstName}</h:outputLabel>
+					</td>
+				</tr>
+
+				<tr>
+					<td width="150" valign="top">Last Name:</td>
+
+					<td valign="bottom"><h:outputLabel id="lastName">#{customerDetailsBean.customer.lastName}</h:outputLabel>
+					</td>
+				</tr>
+
+				<tr>
+					<td width="150" valign="top">Industry Type</td>
+
+					<td valign="bottom"><h:outputLabel id="industry">#{customerDetailsBean.customer.industryType.industryType}</h:outputLabel>
+					</td>
+				</tr>
+
+				<tr>
+					<td width="100" valign="top">Phone Number:</td>
+					<td valign="bottom"><h:inputText id="phoneNo"
+							value="#{customerDetailsBean.customer.phoneNo}" required="true"
+							validatorMessage="Please enter a Valid Phone Number"
+							requiredMessage="Please enter a Phone Number. "></h:inputText>
+							
+					<br/>
+							<h:message for="phoneNo" class="#{!phoneNo.valid ? 'label label-warning' : 'none'}" />
+					</td>
+				</tr>
+
+
+				<tr>
+					<td width="100" valign="top">Email:</td>
+					<td valign="bottom"><h:inputText id="email"
+							value="#{customerDetailsBean.customer.email}" required="true"
+							validatorMessage="Please enter a valid email."
+							requiredMessage="Please enter an email. "></h:inputText>
+							
+					<br/>
+							<h:message for="email" class="#{!email.valid ? 'label label-warning' : 'none'}" />
+					</td>
+				</tr>
+
+				<tr>
+					<td width="100" valign="top"><b>ADDRESS</b></td>
+					<td valign="bottom">&nbsp;</td>
+				</tr>
+
+				<tr>
+					<td width="100" valign="top">Street Number:</td>
+					<td valign="bottom">
+					<h:inputText id="streetNumber" value="#{customerBean.streetNumber}" 
+						required="true" requiredMessage="Please enter the street number!" 
+						converterMessage="Please enter number only">
+						<f:convertNumber integerOnly="true"/>
+					</h:inputText>
+					
+					<br/>
+							<h:message for="streetNumber" class="#{!streetNumber.valid ? 'label label-warning' : 'none'}" />
+							</td>
+				</tr>
+
+				<tr>
+					<td width="100" valign="top">Street Address:</td>
+					<td valign="bottom"><h:inputText id="streetAddress"
+							value="#{customerDetailsBean.customer.address.streetAddress}"
+							required="true"	requiredMessage="Please enter an Street Address. "></h:inputText>
+					<br/>
+							<h:message for="streetAddress" class="#{!streetAddress.valid ? 'label label-warning' : 'none'}" />
+							</td>
+				</tr>
+
+
+				<tr>
+					<td width="100" valign="top">suburb:</td>
+					<td valign="bottom"><h:inputText id="suburb"
+							value="#{customerDetailsBean.customer.address.suburb}"
+							required="true"	requiredMessage="Please enter an suburb "></h:inputText>
+					
+					<br/>
+							<h:message for="suburb" class="#{!suburb.valid ? 'label label-warning' : 'none'}" />
+							</td>
+				</tr>
+
+
+				<tr>
+					<td width="100" valign="top">City:</td>
+					<td valign="bottom"><h:inputText id="city"
+							value="#{customerDetailsBean.customer.address.city}"
+							required="true"	requiredMessage="Please enter an City. "></h:inputText>
+					
+					<br/>
+							<h:message for="city" class="#{!city.valid ? 'label label-warning' : 'none'}" />
+							</td>
+				</tr>
+				<tr>
+				<td>
+					<h:outputLabel for="postcode" value="postcode"/>
+				</td>
+				<td>
+					<h:inputText id="postcode" value="#{customerDetailsBean.customer.address.postcode}" required="true"
+					requiredMessage="Please enter the postcode!" validatorMessage="Please enter a postcode between 0200 and 4700" 
+                            converterMessage="Please enter a number">
+	                            <f:convertNumber integerOnly="true"/>
+								<f:validateLongRange minimum="200" maximum="4700" /> 
+							</h:inputText>
+					
+					<br/>
+							<h:message for="postcode" class="#{!postcode.valid ? 'label label-warning' : 'none'}" />
+				</td>
+			</tr>
+
+
+				<tr>
+					<td width="100" valign="top">State:</td>
+					<td valign="bottom"><h:inputText id="state"
+							value="#{customerDetailsBean.customer.address.state}"
+							required="true" 
+							requiredMessage="Please enter an State. "></h:inputText>
+					
+					<br/>
+							<h:message for="state" class="#{!state.valid ? 'label label-warning' : 'none'}" />
+							</td>
+				</tr>
+
+
+			</table>
+			
+			<h:commandButton id="save" value="Save"
+					action="#{customerController.editCustomer(customerDetailsBean.customer)}"
+					class="btn btn-primary">
+					<f:param name="customerID"
+						value="#{customerDetailsBean.customer.customerId}" />
+				</h:commandButton>
+				
+			<h:link id="close" value="Close" outcome="/faces/customer/manageCustomers.xhtml"
+					class="btn btn-primary" />	
+			
+		</h:form>
+	</div>
+</h:body>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -6,7 +6,7 @@
 
 <h:head>
 <h:outputStylesheet library = "css" name = "headerStyle.css" /> 
-
+<ui:insert name="headerContents"></ui:insert>
 
 </h:head> 
 <body> 
@@ -16,17 +16,21 @@
  
  <tr><td>
  <div class="header-left">
-	 <a class="active" href="../../faces/staff/home.xhtml">Home</a>
+	 <!-- <a class="active" href="../../faces/staff/home.xhtml">Home</a> -->
+	 
+	<h:link class="active" value="Home" outcome="/faces/staff/home.xhtml"/>
+
 	</div>
 </td><td>
 	
 
 	<div class="header-center">
-		<label> welcome #{headerBean.loginUserName}</label>
+		<label> welcome #{headerBean.loggedUserName}</label>
 	</div>	
 </td><td>
   <div class="header-right">
-    <a href="../logout.xhtml">Logout</a> 
+    <!-- <a href="../logout.xhtml">Logout</a>  -->
+    <h:link class="active" value="Logout" outcome="/faces/logout.xhtml"/>
 	
 	<!--  <h:outputLink value="../logout.xhtml"> Logout houtput faces
 	</h:outputLink>-->

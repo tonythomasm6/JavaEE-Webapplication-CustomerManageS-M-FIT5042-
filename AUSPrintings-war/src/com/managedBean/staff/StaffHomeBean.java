@@ -49,11 +49,7 @@ public class StaffHomeBean implements Serializable{
 	        
 		 getLoggedAgentDetails(loggedUserName);
 		 
-		 //getAllIndustryTypes();
 		 
-		 ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		 Map<String, Object> sessionMap = externalContext.getSessionMap();
-		 sessionMap.put("loggedUserName", loggedUserName);
 		 
 	}
 	
@@ -61,6 +57,9 @@ public class StaffHomeBean implements Serializable{
 		Agent agent = managedBeanRepository.getLoggedAgentDetails(loggedUserName);
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		
+		loggedUserName = agent.getFirstName() + " " + agent.getLastName();
+		
 		sessionMap.put("loggedUserName", loggedUserName);
 		sessionMap.put("loggedAgent", agent);
 		
