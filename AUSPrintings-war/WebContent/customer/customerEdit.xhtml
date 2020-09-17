@@ -16,7 +16,7 @@
 	 <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
 </ui:define>
 	<ui:define name="PageTitle">
-		<h>Customer Details</h>
+		<h><b>Customer Details</b></h>
 	</ui:define>
 	<ui:define name="content">
 	
@@ -25,7 +25,7 @@
 	<div class="container">
 		<h:form>
 			
-				<font style="color:red"><b>	<h:messages></h:messages> </b></font>
+				<!-- <font style="color:red"><b>	<h:messages></h:messages> </b></font> -->
 			<br />
 			<table class="table table-bordered ">
 				<tr>
@@ -90,7 +90,7 @@
 				<tr>
 					<td width="100" valign="top">Street Number:</td>
 					<td valign="bottom">
-					<h:inputText id="streetNumber" value="#{customerBean.streetNumber}" 
+					<h:inputText id="streetNumber" value="#{customerDetailsBean.customer.address.streetNumber}" 
 						required="true" requiredMessage="Please enter the street number!" 
 						converterMessage="Please enter number only">
 						<f:convertNumber integerOnly="true"/>
@@ -168,7 +168,7 @@
 			</table>
 			
 			<h:commandButton id="save" value="Save"
-					action="#{customerController.editCustomer(customerDetailsBean.customer)}"
+					action="#{manageCustomersBean.editCustomer(customerDetailsBean.customer)}"
 					class="btn btn-primary">
 					<f:param name="customerID"
 						value="#{customerDetailsBean.customer.customerId}" />

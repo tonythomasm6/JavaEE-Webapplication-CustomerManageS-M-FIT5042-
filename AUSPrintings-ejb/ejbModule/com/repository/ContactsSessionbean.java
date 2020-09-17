@@ -48,4 +48,11 @@ public class ContactsSessionbean implements ContactsRepository{
 		
 	}
 
+	@Override
+	public void deleteContact(CustomerContact contact) {
+		CustomerContact c = entityManager.merge(contact);
+		entityManager.remove(c);
+		
+	}
+
 }

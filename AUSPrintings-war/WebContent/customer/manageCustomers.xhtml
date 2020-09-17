@@ -29,7 +29,7 @@
     
 </h:head>
 
-<h:link value="Add Customer" outcome="addCustomer.xhtml"/>
+<h:link value="Add Customer" outcome="addCustomer.xhtml" class="btn btn-primary"/>
 
 
 <h:body>
@@ -70,7 +70,7 @@
                                   You can get the value from next page using the indexController -->
                                   <f:param name="customerID" value="#{customer.customerId}"/>
                    </h:link>
-                   <h:commandLink value="Delete" action="#{customerController.deleteCustomer(customer)}">
+                   <h:commandLink value="Delete" action="#{manageCustomersBean.deleteCustomer(customer)}">
                                 </h:commandLink>
     			</td>
     			

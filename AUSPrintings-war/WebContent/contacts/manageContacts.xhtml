@@ -33,15 +33,16 @@
 </h:head>
 
 
+<h:link value="Add Contacts" outcome="addContact.xhtml" class="btn btn-primary"/>
 
 <h:body>
 <h:form id="myForm">
 
-<h:link value="Add Contacts" outcome="addContact.xhtml"/>
+
 <br />
 
 	                <h:selectOneMenu value="#{manageContactBean.selectedCustomerId}">
-	                		<f:selectItem itemValue="#{null}" itemLabel="--select--" />
+	                		<f:selectItem itemValue="0" itemLabel="--select--" />
 							<f:selectItems value="#{manageContactBean.customers}" var="customer"
 								itemValue="#{customer.customerId}" 
 								itemLabel="#{customer.customerId} - #{customer.firstName} #{customer.lastName}" id="selectCustomer" />
@@ -87,7 +88,13 @@
                                   <f:param name="customerContactId" value="#{contact.customerContactId}"/>
                    </h:link> 
                    
-                
+                <h:commandLink value="Delete" action="#{manageContactBean.deleteContact(contact)}">
+                <!-- Customer ID is sent to load this customer details after deletion -->
+                 	<f:param name="customerId" value="#{manageContactBean.selectedCustomerId}"/>
+                                </h:commandLink>
+                                
+                                
+
 			
     			</td>
     			

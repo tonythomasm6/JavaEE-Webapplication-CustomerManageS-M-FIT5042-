@@ -116,7 +116,7 @@ public class ContactBean implements Serializable {
 	}
 	
 	
-	
+	/*
 
 	public void addContacts(ContactBean contact) {
 		CustomerContact customerContact = convertBeanToEntity(contact);
@@ -147,5 +147,8 @@ public class ContactBean implements Serializable {
 		return customerContact;
 		
 	}
+	
+	
+	*/
 
 }

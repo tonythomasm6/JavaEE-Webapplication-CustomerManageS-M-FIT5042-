@@ -80,4 +80,8 @@ public class ManagedBeanRepository implements Serializable {
 		contactsRepository.editContact(c);
 	}
 	
+	public void deleteContact(CustomerContact c) {
+		contactsRepository.deleteContact(c);
+	}
+	
 }

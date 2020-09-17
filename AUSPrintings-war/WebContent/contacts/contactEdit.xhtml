@@ -25,7 +25,7 @@
 	<div class="container">
 		<h:form>
 			
-				<font style="color:red"><b>	<h:messages></h:messages> </b></font>
+				<!-- <font style="color:red"><b>	<h:messages></h:messages> </b></font> -->
 			<br />
 			<table class="table table-bordered ">
 				<tr>
@@ -91,13 +91,13 @@
 			</table>
 			
 			<h:commandButton id="save" value="Save"
-					action="#{contactDetailsBean.editContact(contactDetailsBean.contact)}"
+					action="#{manageContactBean.editContact(contactDetailsBean.contact)}"
 					class="btn btn-primary">
-					<f:param name="customerID"
-						value="#{customerDetailsBean.customer.customerId}" />
+					<f:param name="customerContactId"
+						value="#{contactDetailsBean.contact.customerContactId}" />
 				</h:commandButton>
 				
-			<h:link id="close" value="Close" outcome="/faces/customer/manageCustomers.xhtml"
+			<h:link id="close" value="Close" outcome="/faces/contacts/manageContacts.xhtml"
 					class="btn btn-primary" />	
 			
 		</h:form>

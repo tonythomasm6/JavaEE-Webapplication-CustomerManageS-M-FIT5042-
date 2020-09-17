@@ -176,13 +176,13 @@
 			</tr>
 			
 			
-			<tr><td>
-				 <h:commandButton id="submit" value="Submit" action="#{customerController.addCustomer(customerBean)}" class="btn btn-primary" />
-			</td></tr>
 			
 		</table>
 		
+		<h:commandButton id="submit" value="Submit" action="#{manageCustomersBean.addCustomer(customerBean)}" class="btn btn-primary" />
 		
+		<h:link id="close" value="Close" outcome="/faces/customer/manageCustomers.xhtml"
+					class="btn btn-primary" />
 		
 	</h:form>
 </div>

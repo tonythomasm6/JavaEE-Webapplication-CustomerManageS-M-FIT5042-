@@ -17,18 +17,33 @@ import com.entities.Agent;
 import com.entities.Customer;
 import com.entities.IndustryType;
 import com.managedBeans.common.ManagedBeanRepository;
+import com.managedBeans.contacts.ManageContactBean;
 
 @Named
 @SessionScoped
 public class CustomerController implements Serializable {
 
+	/*
+	 * 
 	@ManagedProperty(value = "#{managedBeanRepository}")
 	private ManagedBeanRepository managedBeanRepository;
+
+	@ManagedProperty(value = "#{manageContactBean}")
+	private ManageContactBean manageContactBean;
+
+	@ManagedProperty(value = "#{manageCustomersBean}")
+	private ManageCustomersBean manageCustomersBean;
 
 	public CustomerController() {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		managedBeanRepository = (ManagedBeanRepository) FacesContext.getCurrentInstance().getApplication()
 				.getELResolver().getValue(elContext, null, "managedBeanRepository");
+
+		manageContactBean = (ManageContactBean) FacesContext.getCurrentInstance().getApplication().getELResolver()
+				.getValue(elContext, null, "manageContactBean");
+
+		manageCustomersBean = (ManageCustomersBean) FacesContext.getCurrentInstance().getApplication().getELResolver()
+				.getValue(elContext, null, "manageCustomersBean");
 	}
 
 	public Customer convertManagedBeantoEntity(CustomerBean customerManagedBean) {
@@ -57,7 +72,7 @@ public class CustomerController implements Serializable {
 		agent = (Agent) sessionMap.get("loggedAgent");
 		customer.setAgent(agent);
 
-		/** Getting industrytype details from the selected industry id **/
+		// Getting industrytype details from the selected industry id 
 		int typeId = customerManagedBean.getTypeId();
 		IndustryType industry = getIndustryTypeFromId(typeId);
 		customer.setIndustryType(industry);
@@ -82,6 +97,11 @@ public class CustomerController implements Serializable {
 	public void addCustomer(CustomerBean customerBean) {
 		Customer customer = convertManagedBeantoEntity(customerBean);
 		managedBeanRepository.addCustomer(customer);
+
+		// Following method is to update customers list to see in manage contacts after
+		// adding customer;
+		manageContactBean.updateCustomersFromDB();
+
 		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
 				new FacesMessage("New Customer added succesfully"));
 	}
@@ -93,9 +113,14 @@ public class CustomerController implements Serializable {
 	}
 
 	public void deleteCustomer(Customer customer) {
+
 		managedBeanRepository.deleteCustomer(customer);
 		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
 				new FacesMessage("Customer deleted succesfully"));
+		manageCustomersBean.updateCustomersFromDB();
+
 	}
+	
+	*/
 
 }

@@ -13,4 +13,6 @@ public interface ContactsRepository {
 	public CustomerContact getCustomerContactFromId(int contactId);
 	
 	public void editContact(CustomerContact c);
+	
+	public void deleteContact(CustomerContact c);
 }

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.el.ELContext;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.annotation.ManagedProperty;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -58,8 +59,9 @@ public class ContactDetailsBean implements Serializable {
 		return managedBeanRepository.getCustomerContactFromId(contactId);
 	}
 	
-	//Method to edit the customer contact details
-	public void editContact(CustomerContact contact) {
-		managedBeanRepository.editContact(contact);
-	}
+	
+	
+	
+	
+	
 }
