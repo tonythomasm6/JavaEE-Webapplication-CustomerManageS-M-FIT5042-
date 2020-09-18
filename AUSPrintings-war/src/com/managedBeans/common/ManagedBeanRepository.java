@@ -13,6 +13,7 @@ import com.entities.Agent;
 import com.entities.Customer;
 import com.entities.CustomerContact;
 import com.entities.IndustryType;
+import com.repository.AdminRepository;
 import com.repository.AgentRepository;
 import com.repository.ContactsRepository;
 import com.repository.CustomerRepository;
@@ -29,6 +30,9 @@ public class ManagedBeanRepository implements Serializable {
 	
 	@EJB
 	ContactsRepository contactsRepository;
+	
+	@EJB
+	AdminRepository adminRepository;
 	
 	public Agent getLoggedAgentDetails(String loggedUserName) {
 		Agent agent = agentRepository.getLoggedAgentDetails(loggedUserName);
@@ -85,4 +89,25 @@ public class ManagedBeanRepository implements Serializable {
 		contactsRepository.deleteContact(c);
 	}
 	
+	public List<Agent> getAllStaff() {
+		List<Agent> agents =agentRepository.getAllStaff();
+		return agents;
+	}
+	
+	public void addStaff(Agent staff) {
+		adminRepository.addStaff(staff);
+	}
+	
+	public Agent getAgentFromId(int agentId) {
+		Agent a = adminRepository.getAgentFromId(agentId);
+		return a;
+	}
+	
+	public void editAgent(Agent a) {
+		adminRepository.editAgent(a);
+	}
+	
+	public void deleteAgent(Agent a) {
+		adminRepository.deleteAgent(a);
+	}
 }

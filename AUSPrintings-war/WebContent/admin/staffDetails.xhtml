@@ -15,7 +15,7 @@
 </ui:define>
 
 	<ui:define name="PageTitle">
-		<h><b>Contact Details</b></h>
+		<h><b>Customer Details</b></h>
 	</ui:define>
 	<ui:define name="content">
 
@@ -25,50 +25,45 @@
 			<h:form>
 				<table class="table table-bordered ">
 					<tr>
-						<td width="150" valign="top">Id:</td>
+						<td width="150" valign="top">Staff ID:</td>
 
-						<td valign="bottom"><h:outputLabel id="Id">#{contactDetailsBean.customerContactId}</h:outputLabel>
+						<td valign="bottom"><h:outputLabel id="Id">#{staffDetailsBean.agent.agentId}</h:outputLabel>
 						</td>
 					</tr>
 
 					<tr>
+						<td width="150" valign="top">User Name</td>
+
+						<td valign="bottom"><h:outputLabel id="userName">#{staffDetailsBean.agent.userName}</h:outputLabel>
+						</td>
+					</tr>
+					
+					<tr>
 						<td width="150" valign="top">First Name:</td>
 
-						<td valign="bottom"><h:outputLabel id="firstName">#{contactDetailsBean.contact.firstName}</h:outputLabel>
+						<td valign="bottom"><h:outputLabel id="firstName">#{staffDetailsBean.agent.firstName}</h:outputLabel>
 						</td>
 					</tr>
 
 					<tr>
 						<td width="150" valign="top">Last Name:</td>
 
-						<td valign="bottom"><h:outputLabel id="lastName">#{contactDetailsBean.contact.lastName}</h:outputLabel>
+						<td valign="bottom"><h:outputLabel id="lastName">#{staffDetailsBean.agent.lastName}</h:outputLabel>
 						</td>
 					</tr>
 
-					<tr>
-						<td width="150" valign="top">Phone Number:</td>
-
-						<td valign="bottom"><h:outputLabel id="phoneNo">#{contactDetailsBean.contact.phoneNumber}</h:outputLabel>
-						</td>
-					</tr>
-
-					<tr>
-						<td width="150" valign="top">Business Phone:</td>
-
-						<td valign="bottom"><h:outputLabel id="email">#{contactDetailsBean.contact.businessPhone}</h:outputLabel>
-						</td>
-					</tr>
+					
 
 					<tr>
 						<td width="150" valign="top">Email:</td>
 
-						<td valign="bottom"><h:outputLabel id="address">#{contactDetailsBean.contact.email}</h:outputLabel>
+						<td valign="bottom"><h:outputLabel id="email">#{staffDetailsBean.agent.email}</h:outputLabel>
 						</td>
 					</tr>
 
 				</table>
 
-				<h:link id="close" value="Close" outcome="/faces/contacts/manageContacts.xhtml"
+				<h:link id="close" value="Close" outcome="/faces/admin/manageStaff.xhtml"
 					class="btn btn-primary" />
 
 

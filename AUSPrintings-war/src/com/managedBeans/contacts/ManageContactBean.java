@@ -79,6 +79,27 @@ public class ManageContactBean implements Serializable {
 		//updateCustomersFromDB();
 	}
 
+	
+	
+	//This variable is given as hidden parameter in xhtml to ensure that the updated customers list is loaded 
+	//everytime the managecontacts xhtml is loaded.
+	private String onloadvar = "";
+	public String getOnloadvar() {
+		this.customers = manageCustomersBean.getCustomers();
+		return onloadvar;
+	}
+
+	public void setOnloadvar(String onloadvar) {
+		this.onloadvar = onloadvar;
+	}
+	
+	
+	
+	
+	
+	
+	
+
 	// To load all contacts for the selected customer from dropdown
 	//// this method is in this class as manageContact xhtml is binded to this class
 	// and contacts is field of this class.

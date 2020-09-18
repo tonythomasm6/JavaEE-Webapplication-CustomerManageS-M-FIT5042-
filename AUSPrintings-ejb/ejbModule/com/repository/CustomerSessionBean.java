@@ -41,9 +41,9 @@ public class CustomerSessionBean implements CustomerRepository{
 	}
 	
 	public Customer getCustomer( int customerId) {
-		Customer customer = new Customer();
-		customer = (Customer) entityManager.createQuery("SELECT c FROM Customer c where c.customerId =:cusId").setParameter("cusId", customerId).getSingleResult();
-		//customer = entityManager.find(Customer.class, customerId);
+		//Customer customer = new Customer();
+		//customer = (Customer) entityManager.createQuery("SELECT c FROM Customer c where c.customerId =:cusId").setParameter("cusId", customerId).getSingleResult();
+		Customer customer = entityManager.find(Customer.class, customerId);
 		return customer;
 	}
 

@@ -16,24 +16,23 @@
  
  <tr><td>
  <div class="header-left">
-	 <!-- <a class="active" href="../../faces/staff/home.xhtml">Home</a> -->
 	 
-	<h:link class="active" value="Home" outcome="/faces/staff/home.xhtml"/>
+	<!-- <h:link class="active" value="Home" outcome="/faces/admin/home.xhtml"/> -->
+	
+	<h:link class="active" value="Home" outcome="#{headerBean.homeLink}"/>
 
 	</div>
 </td><td>
 	
 
 	<div class="header-center">
-		<label> Welcome #{headerBean.loggedUserName}</label>
+		<label> welcome header  ====  #{headerBean.loggedUserName}</label>
 	</div>	
 </td><td>
   <div class="header-right">
     <!-- <a href="../logout.xhtml">Logout</a>  -->
     <h:link class="active" value="Logout" outcome="/faces/logout.xhtml"/>
 	
-	<!--  <h:outputLink value="../logout.xhtml"> Logout houtput faces
-	</h:outputLink>-->
 	
   </div>
   

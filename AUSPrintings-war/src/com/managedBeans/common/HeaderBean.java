@@ -19,8 +19,19 @@ public class HeaderBean implements Serializable{
 
 	private String loggedUserName;
 
+	private String homeLink;
 	
-	
+	public String getHomeLink() {
+		return homeLink;
+	}
+
+
+	public void setHomeLink(String homeLink) {
+		this.homeLink = homeLink;
+	}
+
+
+
 	public String getLoggedUserName() {
 		return loggedUserName;
 	}
@@ -45,6 +56,12 @@ public class HeaderBean implements Serializable{
 			 loggedUserName = principal.getName();
 		 }
 		 Agent agent = managedBeanRepository.getLoggedAgentDetails(loggedUserName);
+		 
+		 if(agent.getRole().equalsIgnoreCase("admin")) {
+			 homeLink ="/faces/admin/home.xhtml";
+		 }else {
+			 homeLink = "/faces/staff/home.xhtml";
+		 }
 		
 		loggedUserName = agent.getFirstName() + " " + agent.getLastName();
 		

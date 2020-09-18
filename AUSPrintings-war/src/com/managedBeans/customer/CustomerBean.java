@@ -1,6 +1,7 @@
 package com.managedBeans.customer;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -20,6 +21,44 @@ import com.managedBeans.common.ManagedBeanRepository;
 public class CustomerBean implements Serializable {
 
 	private List<IndustryType> allIndustryTypes;
+	
+	private int selectedStaffId;
+	public int getSelectedStaffId() {
+		return selectedStaffId;
+	}
+
+	public void setSelectedStaffId(int selectedStaffId) {
+		this.selectedStaffId = selectedStaffId;
+	}
+
+
+
+
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+
+
+
+
+	private List<Agent> allStaff = new ArrayList<Agent>();
+	private boolean isAdmin = false;
+
+	public List<Agent> getAllStaff() {
+		return allStaff;
+	}
+
+	public void setAllStaff(List<Agent> allStaff) {
+		this.allStaff = allStaff;
+	}
+	
+	
 
 	@ManagedProperty(value = "#{managedBeanRepository}")
 	private ManagedBeanRepository managedBeanRepository;
@@ -31,7 +70,22 @@ public class CustomerBean implements Serializable {
 		managedBeanRepository = (ManagedBeanRepository) FacesContext.getCurrentInstance().getApplication()
 				.getELResolver().getValue(elContext, null, "managedBeanRepository");
 		allIndustryTypes = managedBeanRepository.getAllIndustryTypes();
+		
+		//To get all staff for admin
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		Agent agent = (Agent) sessionMap.get("loggedAgent");
+		if(agent.getRole().equalsIgnoreCase("admin")) {
+			allStaff = managedBeanRepository.getAllStaff();
+			if(allStaff.size() > 0) {
+				isAdmin = true;
+			}
+		}
+		
 	}
+	
+	
+	
 
 	public List<IndustryType> getAllIndustryTypes() {
 		return allIndustryTypes;

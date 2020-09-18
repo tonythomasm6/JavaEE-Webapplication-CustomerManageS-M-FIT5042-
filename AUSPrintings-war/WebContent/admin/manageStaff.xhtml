@@ -29,7 +29,7 @@
     
 </h:head>
 
-<h:link value="Add Customer" outcome="addCustomer.xhtml" class="btn btn-primary"/>
+<h:link value="Add Staff" outcome="addStaff.xhtml" class="btn btn-primary"/>
 
 
 <h:body>
@@ -40,40 +40,35 @@
 <table id="tableData"  class="table table-striped table-bordered" style="width:100%">
 		<thead>
             <tr>
-                <th>Customer ID</th>
+                <th>Staff ID</th>
+                <th>User Name</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Assigned to Staff</th>
-                <th>Phone Number</th>
                 <th>Email</th>
-                <th>Industry Type</th>
-                <th> &nbsp;</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         
 		<tbody>
-		<c:forEach items="#{manageCustomersBean.customers}" var="customer">
+		<c:forEach items="#{manageStaffBean.staffs}" var="staff">
     		<tr>
-    			<td>#{customer.customerId}</td>
-    			<td>#{customer.firstName}</td>
-    			<td>#{customer.lastName}</td>
-    			<td >#{customer.agent.agentId}- #{customer.agent.firstName} #{customer.agent.lastName}</td>
-    			<td>#{customer.phoneNo}</td>
-    			<td>#{customer.email}</td>
-    			<td>#{customer.industryType.industryType}</td>
+    			<td>#{staff.agentId}</td>
+    			<td>#{staff.userName}</td>
+    			<td>#{staff.firstName}</td>
+    			<td >#{staff.lastName}</td>
+    			<td>#{staff.email}</td>
     			<td>
-    				<h:link value="View | " outcome="/faces/customer/customerDetails.xhtml">
+    				<h:link value="View | " outcome="/faces/admin/staffDetails.xhtml">
                                 <!-- pass the parameter to next page, the param name is propertyID, and the value is index + 1.
                                   You can get the value from next page using the indexController -->
-                                  <f:param name="customerID" value="#{customer.customerId}"/>
+                                  <f:param name="agentId" value="#{staff.agentId}"/>
                    </h:link>
-                   <h:link value="Edit | " outcome="/faces/customer/customerEdit.xhtml">
+                   <h:link value="Edit | " outcome="/faces/admin/staffEdit.xhtml">
                                 <!-- pass the parameter to next page, the param name is propertyID, and the value is index + 1.
                                   You can get the value from next page using the indexController -->
-                                  <f:param name="customerID" value="#{customer.customerId}"/>
+                                   <f:param name="agentId" value="#{staff.agentId}"/> 
                    </h:link>
-                   <h:commandLink value="Delete" action="#{manageCustomersBean.deleteCustomer(customer)}">
-                                </h:commandLink>
+                  
     			</td>
     			
     		</tr>

@@ -26,6 +26,16 @@ import com.managedBeans.common.ManagedBeanRepository;
 public class ManageCustomersBean implements Serializable {
 
 	private List<Customer> customers;
+	
+	private boolean isAdmin = false;
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 
 	public List<Customer> getCustomers() {
 		return customers;
@@ -64,6 +74,10 @@ public class ManageCustomersBean implements Serializable {
 
 		}
 		this.customers = managedBeanRepository.getCustomers(loggedAgent.getAgentId(), loggedAgent.getRole());
+		if(loggedAgent.getRole().equalsIgnoreCase("admin")) {
+			this.isAdmin = true;
+		}
+		
 	}
 
 	public Customer convertManagedBeantoEntity(CustomerBean customerManagedBean) {
@@ -90,8 +104,19 @@ public class ManageCustomersBean implements Serializable {
 
 		Agent agent = new Agent();
 		agent = (Agent) sessionMap.get("loggedAgent");
-		customer.setAgent(agent);
-
+		
+		if(agent.getRole().equalsIgnoreCase("admin")) {
+			List<Agent> allStaff = managedBeanRepository.getAllStaff();
+			for(Agent a : allStaff) {
+				if(a.getAgentId() == customerManagedBean.getSelectedStaffId()) {
+					customer.setAgent(a);
+				}
+			}
+		}
+		else {
+				customer.setAgent(agent);
+		}
+		
 		/** Getting industrytype details from the selected industry id **/
 		int typeId = customerManagedBean.getTypeId();
 		IndustryType industry = getIndustryTypeFromId(typeId);

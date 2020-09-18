@@ -10,4 +10,6 @@ public interface AgentRepository {
 	public Agent getLoggedAgentDetails(String loggedUserName);
 	
 	public List<IndustryType> getAllIndustryTypes();
+	
+	public List<Agent> getAllStaff();
 }

@@ -3,6 +3,7 @@ package com.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -89,7 +90,7 @@ public class Agent  implements Serializable {
 		this.email = email;
 	}
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	public Set<Customer> getCustomer() {
 		return customer;
 	}

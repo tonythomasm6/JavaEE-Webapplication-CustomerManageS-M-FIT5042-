@@ -35,4 +35,11 @@ public class AgentSessionBean implements AgentRepository{
 		return allIndustryTypes;
 	}
 
+	@Override
+	public List<Agent> getAllStaff() {
+		String rol = "staff";
+		List<Agent> agent = entityManager.createQuery("SELECT a FROM Agent a where  a.role= :rol").setParameter("rol", rol).getResultList();
+		return agent;
+	}
+
 }

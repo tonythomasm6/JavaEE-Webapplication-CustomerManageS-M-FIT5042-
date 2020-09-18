@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-<ui:composition template="../staff/header.xhtml">
+<ui:composition template="../header.xhtml">
 	<ui:define name="PageTitle">
 		<h></h>
 	</ui:define>
@@ -39,6 +39,10 @@
 
     </script>
 
+<!-- onloadvar defined to on the getter method of this var on load of this page. in getter method 
+code is written to fetch the updated customers list -->
+
+
 		</h:head>
 
 
@@ -48,7 +52,7 @@
 		<h:body>
 			<h:form id="myForm">
 
-
+			<h:inputHidden  value="#{manageContactBean.onloadvar}"/>
 				<br />
 
 Select Customer to see their Contacts: 
@@ -66,6 +70,16 @@ Select Customer to see their Contacts:
 					</f:ajax>
 				</h:selectOneMenu>
 
+
+
+
+
+
+
+
+
+				<br />
+				<br />
 				<br />
 				<!-- Customer contact table populated by ajax -->
 
