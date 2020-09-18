@@ -1,27 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
-<body> 
-<h:form>
-	<h:outputLabel value="#{logoutBean.logoutMsg}" />
-</h:form>
-
-
+<h:head></h:head>
+<body>
+	<h:form>
+		<h:outputLabel value="#{logoutBean.logoutMsg}" />
+	</h:form>
 
 
 
 
-<br/>
 
-<p>Please attempt to <h:link outcome="login.xhtml" value="login" /> again.</p>
 
-<br /><br />
+	<br />
 
-<p>Please attempt to <h:link outcome="index.xhtml" value="Index" /> again.</p>
+	<p>
+		Please attempt to
+		<h:link outcome="login.xhtml" value="login" />
+		again.
+	</p>
 
-</body> 
+	<br />
+	<br />
+
+	<!-- <p>Please attempt to <h:link outcome="index.xhtml" value="Index" /> again.</p> -->
+
+	<p>
+		Go to
+		<h:outputLink value="/AUSPrintings-war/">Homepage</h:outputLink>
+	</p>
+
+</body>
 </html>

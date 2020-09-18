@@ -105,11 +105,13 @@
 				
 				
 				<tr><td>
-					 <h:commandButton id="submit" value="Submit" action="#{manageContactBean.addContacts(contactBean)}" class="btn btn-primary" />
+					
 				</td></tr>
 				
 			</table>
-			
+			 <h:commandButton id="submit" value="Submit" action="#{manageContactBean.addContacts(contactBean)}" class="btn btn-primary" />
+			<h:link id="close" value="Close" outcome="/faces/contacts/manageContacts.xhtml"
+					class="btn btn-primary" />
 			
 			
 		</h:form>

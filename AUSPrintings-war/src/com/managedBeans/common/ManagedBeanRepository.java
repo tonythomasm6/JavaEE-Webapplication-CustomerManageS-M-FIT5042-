@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -17,7 +18,7 @@ import com.repository.ContactsRepository;
 import com.repository.CustomerRepository;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class ManagedBeanRepository implements Serializable {
 	
 	@EJB

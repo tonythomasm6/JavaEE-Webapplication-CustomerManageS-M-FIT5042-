@@ -1,4 +1,4 @@
-package com.managedBean.staff;
+package com.managedBeans.admin;
 
 import java.io.Serializable;
 import java.security.Principal;
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.el.ELContext;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.ExternalContext;
@@ -19,8 +20,8 @@ import com.managedBeans.common.ManagedBeanRepository;
 
 
 @Named
-@SessionScoped
-public class StaffHomeBean implements Serializable{
+@RequestScoped
+public class AdminHomeBean implements Serializable{
 
 	private String loggedUserName;
 	
@@ -36,7 +37,7 @@ public class StaffHomeBean implements Serializable{
 	@ManagedProperty(value = "#{managedBeanRepository}")
 	private ManagedBeanRepository managedBeanRepository;
 	
-	public StaffHomeBean() {
+	public AdminHomeBean() {
 		Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
 		 if(principal != null) {
 			 loggedUserName = principal.getName();
@@ -66,11 +67,5 @@ public class StaffHomeBean implements Serializable{
 		
 	}
 	
-	/*
-	public void getAllIndustryTypes() {
-		List<IndustryType> allIndustryTypes = managedBeanRepository.getAllIndustryTypes();
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		Map<String, Object> sessionMap = externalContext.getSessionMap();
-		sessionMap.put("allIndustryTypes", allIndustryTypes);
-	} */
+
 }
