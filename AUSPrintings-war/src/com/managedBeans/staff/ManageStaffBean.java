@@ -52,11 +52,11 @@ public class ManageStaffBean implements Serializable{
 
 	public void addStaff(StaffBean staff) {
 		Agent agent = convertManagedBeanToEntity(staff);
+		agent.setRole("staff");
 		managedBeanRepository.addStaff(agent);
 		//To update the staffs after addition
 		updateStaffFromDB();
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage("New Staff added succesfully"));
+		
 	}
 	
 	
@@ -71,11 +71,14 @@ public class ManageStaffBean implements Serializable{
 		String passHash = staff.getPassword();
 		if(!staff.getPassword().equals(staff.getRePassword())){
 			FacesContext.getCurrentInstance().addMessage("addForm:rePassword", new FacesMessage("Passwords should match !!"));
-		}else {;
+		}else {
 			passHash = passwordEncrypt(staff.getPassword());
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("New Staff added succesfully"));
 		}
 		agent.setPassword(passHash);
 		//To encrypt input password
+		
 		return agent;
 		
 	}

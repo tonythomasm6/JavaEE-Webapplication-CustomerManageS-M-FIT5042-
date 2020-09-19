@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.entities.Agent;
+import com.entities.Customer;
 import com.entities.CustomerContact;
 
 @Stateless
@@ -45,6 +46,12 @@ public class AdminSessionBean implements AdminRepository{
 	public void deleteAgent(Agent agent) {
 		Agent a = entityManager.merge(agent);
 		entityManager.remove(a);
+		
+	}
+
+	@Override
+	public void updateCustomerStaffAllocation(Customer c) {
+		entityManager.merge(c);
 		
 	}
 	

@@ -33,22 +33,16 @@ public class CustomerBean implements Serializable {
 
 
 
+	private List<Agent> allStaff = new ArrayList<Agent>();
+	private String isAdmin = "false";
 
-
-	public boolean isAdmin() {
+	public String getIsAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setIsAdmin(String isAdmin) {
 		this.isAdmin = isAdmin;
 	}
-
-
-
-
-
-	private List<Agent> allStaff = new ArrayList<Agent>();
-	private boolean isAdmin = false;
 
 	public List<Agent> getAllStaff() {
 		return allStaff;
@@ -78,7 +72,7 @@ public class CustomerBean implements Serializable {
 		if(agent.getRole().equalsIgnoreCase("admin")) {
 			allStaff = managedBeanRepository.getAllStaff();
 			if(allStaff.size() > 0) {
-				isAdmin = true;
+				isAdmin = "true";
 			}
 		}
 		

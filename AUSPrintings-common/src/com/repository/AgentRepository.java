@@ -12,4 +12,5 @@ public interface AgentRepository {
 	public List<IndustryType> getAllIndustryTypes();
 	
 	public List<Agent> getAllStaff();
+	
 }

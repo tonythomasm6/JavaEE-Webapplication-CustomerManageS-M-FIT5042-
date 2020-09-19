@@ -110,4 +110,10 @@ public class ManagedBeanRepository implements Serializable {
 	public void deleteAgent(Agent a) {
 		adminRepository.deleteAgent(a);
 	}
+	
+	public void updateCustomerStaffAllocation(Customer customer) {
+		adminRepository.updateCustomerStaffAllocation(customer);
+	}
+	
+	
 }
