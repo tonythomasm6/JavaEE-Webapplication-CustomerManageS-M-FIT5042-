@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich">
+
+
+<ui:composition template="../header.xhtml">
+	<ui:define name="headerContents">
+		<!-- <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"/>  -->
+		<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	</ui:define>
+
+	<ui:define name="PageTitle">
+		<h></h>
+	</ui:define>
+	<ui:define name="content">
+
+
+
+
+		<h:body>
+			<div class="container">
+				<h:form id="addForm">
+
+
+					<table class="table table-bordered ">
+						
+						<tr>
+							<td><h:outputLabel for="userName" value="User Name" /></td>
+							<td><h:inputText id="usertName"
+									value="#{staffBean.userName}" required="true"
+									requiredMessage="Please enter User Name!">
+								</h:inputText> <br /> <h:message for="userName"
+									class="#{!lastName.valid ? 'label label-warning' : 'none'}" />
+							</td>
+						</tr>
+	
+						<tr>
+							<td><h:outputLabel for="firstName" value="First Name" /></td>
+							<td><h:inputText id="firstName"
+									value="#{staffBean.firstName}" required="true"
+									requiredMessage="Please enter First Name!">
+								</h:inputText> <br /> <h:message for="firstName"
+									class="#{!firstName.valid ? 'label label-warning' : 'label-warning'}" />
+
+							</td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="lastName" value="Last Name" /></td>
+							<td><h:inputText id="lastName"
+									value="#{staffBean.lastName}" required="true"
+									requiredMessage="Please enter Last Name!">
+								</h:inputText> <br /> <h:message for="lastName"
+									class="#{!lastName.valid ? 'label label-warning' : 'none'}" />
+							</td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="email" value="Email" /></td>
+							<td><h:inputText id="email"
+									value="#{staffBean.email}" required="true"
+									requiredMessage="Please enter Email!">
+								</h:inputText> <br /> <h:message for="email"
+									class="#{!email.valid ? 'label label-warning' : 'none'}" />
+							</td>
+						</tr>
+						
+						<tr>
+							<td><h:outputLabel for="password" value="Password" /></td>
+							<td><h:inputText id="password"
+									value="#{staffBean.password}" required="true"
+									requiredMessage="Please enter password!">
+								</h:inputText> <br /> <h:message for="password"
+									class="#{!password.valid ? 'label label-warning' : 'none'}" />
+							</td>
+						</tr>
+						
+						<tr>
+							<td><h:outputLabel for="rePassword" value="Reenter Password" /></td>
+							<td><h:inputText id="rePassword"
+									value="#{staffBean.rePassword}" required="true"
+									requiredMessage="Please enter password again!">
+								</h:inputText> <br /> <h:message for="rePassword"
+									class="#{!rePassword.valid ? 'label label-warning' : 'none'}" />
+							</td>
+						</tr>
+						
+
+
+					</table>
+
+					<h:commandButton id="submit" value="Submit"
+						action="#{manageStaffBean.addStaff(staffBean)}"
+						class="btn btn-primary" />
+
+					<h:link id="close" value="Close"
+						outcome="/faces/admin/manageStaff.xhtml"
+						class="btn btn-primary" />
+
+				</h:form>
+			</div>
+		</h:body>
+
+
+
+
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<ui:composition template="../header.xhtml">
+
+<ui:define name="headerContents">
+	 <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	 <!--  --><h:outputStylesheet library = "css" name = "headerStyle.css" /> 
+</ui:define>
+
+
+<ui:define name="PageTitle"><h>
+<!-- Input hidden field required to call staffHomebean to get staff login details -->
+	<input type="hidden" id="loggedUserName" name="loggedUserName" value="#{staffHomeBean.loggedUserName}"/>
+	</h></ui:define>
+	
+	
+	
+<ui:define name="content">
+
+<h:body>
+<h:form>
+
+<div class="header-center">
+	<h:link  class="btn btn-primary"  value="Manage Customers" outcome="/faces/customer/manageCustomers.xhtml"/>
+</div>
+	<br />
+	
+<div class="header-center">
+	<h:link  class="btn btn-primary"  value="Manage Customer Contacts" outcome="/faces/contacts/manageContacts.xhtml"/>
+</div>
+	<br />
+
+	
+	<br />
+	
+	<!--<h:outputLink value="faces/customerContact/ViewCustomerContacts.xhtml">
+		Customer Contact Management
+	</h:outputLink> -->
+	
+	<br />
+	
+	<!--
+	<h:outputLink value="faces/ChangePassword.xhtml">
+		Change Password
+	</h:outputLink> -->
+	
+	<br />
+	
+
+</h:form>
+</h:body>
+
+</ui:define>
+</ui:composition>
+
+
+</html>
