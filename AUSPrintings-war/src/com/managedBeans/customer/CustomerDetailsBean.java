@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.el.ELContext;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.annotation.ManagedProperty;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 

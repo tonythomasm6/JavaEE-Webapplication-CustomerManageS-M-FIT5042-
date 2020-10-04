@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="AAUSPrinting-service">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="AAUSPrintings-ejb-Service.jar" deploy-path="/" handle="module:/resource/AAUSPrintings-ejb-Service/AAUSPrintings-ejb-Service">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="AAUSPrintings-com-Service.jar" deploy-path="/lib" handle="module:/resource/AAUSPrintings-com-Service/AAUSPrintings-com-Service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="AAUSPrintings-war-Service.jar" deploy-path="/lib" handle="module:/resource/AAUSPrintings-war-Service/AAUSPrintings-war-Service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
