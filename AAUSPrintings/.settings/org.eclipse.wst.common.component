@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="AAUSPrinting-service">
+    <wb-module deploy-name="AAUSPrintings">
         <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
         <dependent-module archiveName="AAUSPrintings-ejb-Service.jar" deploy-path="/" handle="module:/resource/AAUSPrintings-ejb-Service/AAUSPrintings-ejb-Service">
             <dependent-object/>
