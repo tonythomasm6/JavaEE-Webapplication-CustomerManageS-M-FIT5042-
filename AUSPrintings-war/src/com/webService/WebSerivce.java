@@ -1,57 +1,48 @@
 package com.webService;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
-
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
-import javax.ws.rs.OPTIONS;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import org.json.simple.*;
+import org.json.simple.JSONObject;
 
 import com.entities.Agent;
 import com.entities.Customer;
 import com.entities.IndustryType;
-import com.managedBeans.common.ManagedBeanRepository;
 import com.repository.AgentRepository;
 import com.repository.CustomerRepository;
 
 @Path("generic")
-
-public class WebService {
+public class WebSerivce {
     @SuppressWarnings("unused")
     @Context
     private UriInfo context;
+    @EJB
+   	AgentRepository agentRepository;
     
     @EJB
-	AgentRepository agentRepository;
-    @EJB
-	CustomerRepository customerRepository;
+   	CustomerRepository customerRepository;
 
     /**
      * Default constructor. 
      */
-    public WebService() {
+    public WebSerivce() {
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * Retrieves representation of an instance of WebService
-     * @return an instance of String
-     */
+    
     @GET
     @Produces("application/json")
     @Path("industryTypes")
-    public JSONObject getJson() {
+    public JSONObject getJsonIndustry() {
     	
 
     	List<IndustryType> allIndustryTypes =  agentRepository.getAllIndustryTypes();
@@ -106,10 +97,20 @@ public class WebService {
     	return result;
     }
     
-    
-    
     /**
-     * PUT method for updating or creating an instance of WebService
+     * Retrieves representation of an instance of WebSerivce
+     * @return an instance of String
+     */
+    
+    @GET
+    @Produces("application/json")
+    public String getJson() {
+        // TODO return proper representation object
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * PUT method for updating or creating an instance of WebSerivce
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */

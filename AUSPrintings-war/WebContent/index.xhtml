@@ -7,13 +7,73 @@
 
 <h:head>
 	<title>Homepage</title>
+<h:outputStylesheet library="css" name="loginStyle.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"></link>
+	<h:outputStylesheet library="css" name="styleSheet.css" />
+
+	<style>
+body {
+	background-color: #E0FFFF;
+}
+</style>
 </h:head>
 <h:body>
-	<h1>Navigation</h1>
-	<h:outputLink value="faces/admin/home.xhtml">Access Administration</h:outputLink>
+
+<!--<h1>AUS Printings</h1> -->
+
 	
-	<br />
-	<br />
-	<h:outputLink value="faces/staff/home.xhtml">Access Staff</h:outputLink>
+<!--
+	<div class="container1">
+		<h:outputLink value="faces/admin/home.xhtml" class="btnIndex">
+			<div class="fas fa-user-shield">Admin</div>
+		</h:outputLink> -->
+		<!--</div>  -->
+		<!--<br />
+		<br /> <br />
+		<br /> <br />
+		<br /> -->
+		<!--<div class="container2"> -->
+		<!--<h:outputLink value="faces/staff/home.xhtml" class="btnIndex">
+			<div class="fas fa-users">Staff</div>
+		</h:outputLink>
+
+
+	</div>
+
+-->
+<div class="main">
+		<p class="sign" align="center">AUSPrintings</p>
+		
+		<br />
+		<p class="sign2" align="center">Select Role to login:</p>
+		
+				<br />
+				
+			<h:outputLink value="faces/admin/home.xhtml" class="submitHomeAdmin">
+			Admin
+		</h:outputLink>	
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				
+			<!--<input class="pass" type="password"
+				id="myInput" align="center" placeholder="Password" name="j_password" /> -->
+			<!--<input type="checkbox" onclick="myFunction()">Show Password</input>-->
+			<h:outputLink value="faces/staff/home.xhtml" class="submitHomeStaff">
+				Staff
+		</h:outputLink>	
+		
+		
+		<!--	<br /> <input class="submit" align="center" type="submit"
+				value="Submit" /> <br /> <br />
+			<div style="text-align: center;">
+				<a href="/_AUSPrintings-war/"><u>Back to home</u></a>
+			</div> -->
+	</div>
+
+
 </h:body>
 </html>

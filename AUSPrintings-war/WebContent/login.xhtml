@@ -5,8 +5,18 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
+	<h:outputStylesheet library="css" name="loginStyle.css" />
 	<title>User Authentication</title>
-	
+	<style>
+</style>
+
+
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu"
+		rel="stylesheet"></link>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+	</link>
+	<title>Sign in</title>
 	<script>
 	function myFunction() {
 		  var x = document.getElementById("myInput");
@@ -19,16 +29,26 @@
 	</script>
 </h:head>
 <h:body>
-	<h1>User Authentication</h1>
-	<form method="post" action="j_security_check">
-		<label for="j_username">Username:</label> 
-		<input type="text" name="j_username" /> 
-		<label for="j_password">Password:</label> 
-		<input type="password" id="myInput" name="j_password" />
-		<input type="checkbox" onclick="myFunction()">Show Password</input>
-		<br />
-		<input type="submit" value="Submit" />
-	</form>
+
+	<div class="main">
+		<p class="sign" align="center">Sign in</p>
+		<form method="post" action="j_security_check" class="form1">
+			<input class="un " type="text" align="center" placeholder="Username"
+				name="j_username" /> 
+			<input class="pass" type="password"
+				id="myInput" align="center" placeholder="Password" name="j_password" />
+			<!--<input type="checkbox" onclick="myFunction()">Show Password</input>-->
+			<br /> <input class="submit" align="center" type="submit"
+				value="Submit" /> <br /> <br />
+			<div style="text-align: center;">
+				<a href="/_AUSPrintings-war/"><u>Back to home</u></a>
+			</div>
+		</form>
+	</div>
+
+
+
+
 </h:body>
 
 </html>

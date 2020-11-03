@@ -8,6 +8,61 @@
 <h:outputStylesheet library = "css" name = "headerStyle.css" /> 
 <ui:insert name="headerContents"></ui:insert>
 
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #033c73;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav .sideLink {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #FFFFFF;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav .sideLink:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+</style>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
 </h:head> 
 <body> 
 
@@ -19,28 +74,42 @@
 	 
 	<!-- <h:link class="active" value="Home" outcome="/faces/admin/home.xhtml"/> -->
 	
+	
+	<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <br />
+  <br />
+  <h:link class="sideLink" value="Manage Customers" outcome="/faces/customer/manageCustomers.xhtml"/>
+  <h:link class="sideLink" value="Manage Contacts" outcome="/faces/contacts/manageContacts.xhtml"/>
+  <h:link class="sideLink" value="Manage Staffs" rendered="#{headerBean.isAdmin}" outcome="/faces/admin/manageStaff.xhtml"/>
+  <h:link class="sideLink" value="Assign Customer Staff" rendered="#{headerBean.isAdmin}"  outcome="/faces/admin/assignCustomerStaff.xhtml"/>
+</div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;  </span>
+
+
+	
 	<h:link class="active" value="Home" outcome="#{headerBean.homeLink}"/>
 
 	</div>
-</td><td>
+</td>
+<td>
 	
 
-	<div class="header-center">
-		<label> welcome header  ====  #{headerBean.loggedUserName}</label>
+	<div class="header-right">
+		<label> Welcom #{headerBean.loggedUserName}</label>
 	</div>	
-</td><td>
+</td>
+<td>
 
  <div class="header-right">
     <h:link class="active" value="Change Password" outcome="/faces/changePassword.xhtml"/>
 	
 	
-  </div>
-  
-  
-  
-  <div class="header-right">
+
     <!-- <a href="../logout.xhtml">Logout</a>  -->
-    <h:link class="active" value="Logout" outcome="/faces/logout.xhtml"/>
+    <h:link class="active" value="Logout" outcome="/faces/logout.xhtml" 
+    onclick="if (! confirm('Are you sure you want to logout?')) return false"/>
 	
 	
   </div>
@@ -62,6 +131,24 @@
 
 	<ui:insert name="PageTitle">Default Title</ui:insert>
 	<ui:insert name="content">Default content</ui:insert>
+<br /><br />
+
+<div align="center">
+	<table class="footer">
+		<tr >
+			<td> 
+				<div class="header-center">AUSPrintings Ltd - 2020</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+</div>
+
+
 
 </body> 
 	

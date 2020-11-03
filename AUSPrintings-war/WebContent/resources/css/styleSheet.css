@@ -1,0 +1,36 @@
+.btnIndex {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 30px 35px;
+  font-size: 30px;
+  font-style: oblique;
+  cursor: pointer;
+  border-radius:20px;
+}
+
+/* Darker background on mouse-over */
+.btnIndex:hover {
+  background-color: RoyalBlue;
+}
+
+div.container1 {
+height: 10em;
+   position: relative;
+   margin: 0;
+   position: absolute;               /* 2 */
+   top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+
+
+div.container2 {
+height: 10em;
+   position: relative;
+   margin: 0;
+   position: absolute;               /* 2 */
+	top: 60%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }

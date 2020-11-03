@@ -103,6 +103,10 @@ public class ChangePasswordBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage("changePassForm:reNewPass",
 					new FacesMessage("	Passwords do not match !!"));
 		}
+		else
+		if(!validateNewPass(newPass)) {
+			
+		}
 		else 
 		{
 			loggedAgent.setPassword(passwordEncrypt(newPass));
@@ -114,6 +118,38 @@ public class ChangePasswordBean implements Serializable {
 		return "changePassword";
 		
 	}
+	
+	
+	//Ajax call to validate new password
+	public boolean validateNewPass(String newPass) {
+		String passMsg = null;
+		if(newPass.length() < 8) {
+			passMsg = "Password must be minimum 8 characters long";
+		}
+		else if(!newPass.matches(".*[A-Z].*")) {
+			passMsg="Password must be a combination of upper and lower case letters";
+		}
+		else if(!newPass.matches(".*[a-z].*")) {
+			
+			passMsg="Password must be a combination of upper and lower case letters";
+		}
+		else if(!newPass.matches("(.)*(\\d)(.)*")) {
+			passMsg="Password must contain a number";
+		}
+		else if(!newPass.matches(".*[`~!@#$%^&*()\\\\-_=+\\\\\\\\|\\\\[{\\\\]};:'\\\",<.>/?].*")) {
+			passMsg = "Password must contain atleast one special character";
+		}
+		
+		if(passMsg!=null) {
+			FacesContext.getCurrentInstance().addMessage("changePassForm:newPass",
+					new FacesMessage(passMsg));
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
+	
 
 	public String passwordEncrypt(String pass) {
 

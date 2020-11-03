@@ -23,12 +23,12 @@
 	<welcome-file-list>
 		<welcome-file>faces/index.xhtml</welcome-file>
 	</welcome-file-list>
-	
+
 	<error-page>
 		<error-code>404</error-code>
 		<location>/faces/errorPages/404Error.xhtml</location>
 	</error-page>
-	
+
 	<error-page>
 		<error-code>403</error-code>
 		<location>/faces/errorPages/403Error.xhtml</location>
@@ -47,8 +47,8 @@
 			<role-name>admin</role-name>
 		</auth-constraint>
 	</security-constraint>
-	
-	
+
+
 	<security-constraint>
 		<display-name>StaffContstraint</display-name>
 		<web-resource-collection>
@@ -62,8 +62,8 @@
 			<role-name>staff</role-name>
 		</auth-constraint>
 	</security-constraint>
-	
-	
+
+
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<realm-name>AUSPrintings_Security</realm-name>
@@ -72,17 +72,29 @@
 			<form-error-page>/faces/errorPages/error.xhtml</form-error-page>
 		</form-login-config>
 	</login-config>
-	
-	
+
+
 	<security-role>
 		<description>Administrator</description>
 		<role-name>admin</role-name>
 	</security-role>
-	
+
 	<security-role>
 		<description>Staff</description>
 		<role-name>staff</role-name>
 	</security-role>
-	
-	
+
+	<!-- Web service change -->
+	<servlet>
+		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>javax.ws.rs.core.Application</servlet-name>
+		<url-pattern>/webresources/*</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>faces/index.xhtml</welcome-file>
+	</welcome-file-list>
+
 </web-app>

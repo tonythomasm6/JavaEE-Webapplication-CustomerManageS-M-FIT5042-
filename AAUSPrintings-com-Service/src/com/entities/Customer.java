@@ -13,6 +13,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @NamedQueries({
@@ -23,11 +25,20 @@ public class Customer implements Serializable{
 	public static final String GET_ALL_QUERY_NAME = "Customer.getAll";
 
 	private int customerId;
+	
+	@NotNull(message = "First name cannot be null")
 	private String firstName;
+	@NotNull(message = "Last name cannot be null")
 	private String lastName;
+	@NotNull(message = "Phone number cannot be null")
+	@Pattern(regexp = "^[0-9]*$" , message="Mobile number entered is invalid")
 	private String phoneNo;
+	@NotNull(message = "Email cannot be null")
+	@Pattern(regexp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message = "This is not a valid email")
 	private String email;
+	@NotNull(message = "Address cannot be null")
 	private Address address;
+	@NotNull(message = "Industrytype cannot be null")
 	private IndustryType industryType;
 	private Set<CustomerContact> customerContact;
 	private Agent agent;
@@ -63,12 +74,16 @@ public class Customer implements Serializable{
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	
 	public String getPhoneNo() {
 		return phoneNo;
 	}
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
+	
+	
 	public String getEmail() {
 		return email;
 	}
@@ -93,7 +108,7 @@ public class Customer implements Serializable{
 		this.industryType = industryType;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
 	public Set<CustomerContact> getCustomerContact() {
 		return customerContact;
 	}

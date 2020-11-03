@@ -1,0 +1,52 @@
+@import "lesshat";
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+html { 
+
+  background-color:#e3f2fd;
+	font-family: 'Roboto', sans-serif;
+
+}
+h1{
+  font-size: 16em;
+  margin: .2em .5em;
+  color: #132ef1;
+  margin-bottom:0px;
+}
+h15{
+  font-size: 4em;
+  margin: .2em .5em;
+  color: #132ef1;
+  margin-bottom:0px;
+}
+h2{
+  font-size: 23px;
+  margin: .2em .5em;
+  color: #132ef1;
+}
+h2.material-icons {
+		font-size: 1.5em;
+		position: relative;
+		top: 10px;
+	}
+
+
+h4{
+  font-size: 1em;
+  margin: .2em .5em;
+  color: #132ef1;
+  margin-bottom:0px;
+}
+
+
+div.error{
+  position:absolute;
+  top:30%;
+  margin-top:-8em;
+  width:100%;
+  text-align:center;
+}
+
+.buttonsStyle {
+  white-space: nowrap;
+  display: inline-block;
+}

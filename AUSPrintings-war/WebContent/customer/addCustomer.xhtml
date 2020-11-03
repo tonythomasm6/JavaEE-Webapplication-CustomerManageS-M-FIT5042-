@@ -58,9 +58,17 @@
 						</tr>
 						<tr>
 							<td><h:outputLabel for="email" value="email" /></td>
-							<td><h:inputText id="email" value="#{customerBean.email}"
-									required="true" requiredMessage="Please enter Email!">
-								</h:inputText> <br /> <h:message for="email"
+							
+							<td>
+							<h:inputText id="email" value="#{customerBean.email}"
+									required="true" requiredMessage="Please enter Email!" validatorMessage="Invalid email entered">
+									 <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+									 
+								</h:inputText>
+
+
+
+								<br /> <h:message for="email"
 									class="#{!email.valid ? 'label label-warning' : 'none'}" /></td>
 						</tr>
 						<tr>

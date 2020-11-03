@@ -1,37 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head>
-<body>
-	<h:form>
-		<h:outputLabel value="#{logoutBean.logoutMsg}" />
-	</h:form>
+<h:head>
 
+<style>
+	<h:outputStylesheet library = "css" name = "logoutStyle.css" /> 
 
-
+</style>
 
 
+</h:head> 
+<body> 
 
-	<br />
 
-	<p>
-		Please attempt to
-		<h:link outcome="login.xhtml" value="login" />
-		again.
-	</p>
+	
+	
+<div class="error">
+  <!-- <h1>403 </h1> -->
+  <h15><b><h:outputLabel value="#{logoutBean.logoutMsg}" /></b></h15>
+  <br />
+  <br />
+  <h2> Click		<i class="material-icons">		
+  
+  	<h:outputLink value="/_AUSPrintings-war/" >Homepage</h:outputLink> 	    </i> 
+		
+  to login again</h2>
+  
+  <!--<h2> <input type="button" value="Go back"></input></h2> -->
+  
+</div>
 
-	<br />
-	<br />
 
-	<!-- <p>Please attempt to <h:link outcome="index.xhtml" value="Index" /> again.</p> -->
-
-	<p>
-		Go to
-		<h:outputLink value="/AUSPrintings-war/">Homepage</h:outputLink>
-	</p>
-
-</body>
+</body> 
 </html>

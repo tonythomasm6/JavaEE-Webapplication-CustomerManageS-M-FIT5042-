@@ -4,8 +4,65 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head> 
+<h:head>
+
+<style>
+@import "lesshat";
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+html { 
+
+  background-color:#e3f2fd;
+	font-family: 'Roboto', sans-serif;
+
+}
+h1{
+  font-size: 16em;
+  margin: .2em .5em;
+  color: #138FF2;
+  margin-bottom:0px;
+}
+h2{
+  font-size: 1.7em;
+  margin: .2em .5em;
+  color: #138FF2;
+  font-family: 'Calibri';
+	.material-icons {
+		font-size: 1.5em;
+		position: relative;
+		top: 10px;
+	}
+}
+div.error{
+  position:absolute;
+  top:30%;
+  margin-top:-8em;
+  width:100%;
+  text-align:center;
+}
+
+.buttonsStyle {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+</style>
+
+
+</h:head> 
 <body> 
- 404 Error page !!!!!
+<div class="error">
+  <h1>404 </h1>
+  <h2>Page not found <i class="material-icons">
+  
+  
+  <h:outputLink value="/_AUSPrintings-war/" >Homepage</h:outputLink>
+  
+   </i> to go back !!</h2>
+  
+  <!--<h2> <input type="button" value="Go back"></input></h2> -->
+  
+</div>
+
+
 </body> 
 </html>

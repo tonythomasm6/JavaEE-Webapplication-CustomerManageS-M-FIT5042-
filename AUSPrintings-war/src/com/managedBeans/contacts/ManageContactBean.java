@@ -144,7 +144,7 @@ public class ManageContactBean implements Serializable {
 		getContactsForCustomer(customerId);
 
 		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
-				new FacesMessage("New Customer Deleted succesfully"));
+				new FacesMessage("Customer contact Deleted succesfully"));
 
 	}
 
@@ -164,7 +164,7 @@ public class ManageContactBean implements Serializable {
 		public void editContact(CustomerContact contact) {
 			managedBeanRepository.editContact(contact);
 			FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
-					new FacesMessage("New Customer Contact details edited succesfully"));
+					new FacesMessage("Customer Contact details edited succesfully"));
 			
 			//To update contact details after editing
 			getContactsForCustomer(selectedCustomerId);

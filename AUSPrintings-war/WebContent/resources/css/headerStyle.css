@@ -1,6 +1,6 @@
 @charset "ISO-8859-1";
 
-<style>
+
 * {box-sizing: border-box;}
 
 body { 
@@ -23,7 +23,7 @@ body {
   line-height: 36px;
   border-radius: 4px;
   background-color: dodgerblue;
-
+ 
 }
 
 
@@ -43,5 +43,12 @@ body {
 	    text-align-last: center; 
 }
 
+.footer {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+  position: fixed; 
+  width:100%;
+  bottom:0px;
+}
 
-</style>

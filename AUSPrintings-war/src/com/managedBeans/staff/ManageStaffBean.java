@@ -2,6 +2,8 @@ package com.managedBeans.staff;
 
 import java.io.Serializable;
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.el.ELContext;
@@ -113,12 +115,32 @@ public class ManageStaffBean implements Serializable{
 	}
 	
 	public void deleteAgent(Agent agent) {
+		
+		//Checking if there are any customers assigned to the staff (Agent)
+		List<Customer> customers = managedBeanRepository.getCustomers(agent.getAgentId(), agent.getRole());
+		if(customers.size() > 0) {
+			
+			List<String> custName = new ArrayList<String>();
+			Iterator iterator = customers.iterator();
+			while(iterator.hasNext()) {
+				Customer ctemp = (Customer) iterator.next();
+				custName.add(ctemp.getFirstName() + " " + ctemp.getLastName());
+			}
+			String ct = custName.toString();
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Staff has following customers assigned : "+custName+ ". Reassign customers to delete the staff !!"));
+		}
+		else {
+		
+		
 		managedBeanRepository.deleteAgent(agent);
 		//To update the staffs after deletion
 		updateStaffFromDB();
 		
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage("Staff deleted successfully"));
+		
+		}
 	}
 	
 }
