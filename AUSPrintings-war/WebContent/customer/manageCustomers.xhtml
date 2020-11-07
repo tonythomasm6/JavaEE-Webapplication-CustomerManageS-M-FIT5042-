@@ -70,7 +70,8 @@
 						itemLabel="#{staff.agentId} - #{staff.firstName} #{staff.lastName}"
 						id="selectStaff" />
 					<f:ajax event="change"
-						listener="#{manageCustomersBean.updateCustomersFromDB(manageCustomersBean.selectedStaffId)}"
+						listener="#{manageCustomersBean.updateCustomersFromDB(manageCustomersBean.selectedStaffId ,
+						 manageCustomersBean.selectedIndustryTypeId)}"
 						execute="selectCustomer" render="myForm">
 					</f:ajax>
 				</h:selectOneMenu>
@@ -79,7 +80,27 @@
 
 				<!-- End of admin handling -->
 
+<!--  Industry type filtering -->
 
+<h:outputLabel id="Id2" rendered="#{manageCustomersBean.isUserAdmin}">
+ 	Select Industry to see their Contacts: </h:outputLabel>
+
+
+				<h:selectOneMenu value="#{manageCustomersBean.selectedIndustryTypeId}"
+					rendered="#{manageCustomersBean.isUserAdmin}">
+					<f:selectItem itemValue="0" itemLabel="All Industries" />
+					<f:selectItems value="#{manageCustomersBean.industryTypes}" var="industryType"
+						itemValue="#{industryType.typeId}"
+						itemLabel="#{industryType.industryType}"
+						id="selectIndustryType" />
+					<f:ajax event="change"
+						listener="#{manageCustomersBean.updateCustomersFromDB(manageCustomersBean.selectedStaffId, 
+										manageCustomersBean.selectedIndustryTypeId)}"
+						execute="selectCustomer" render="myForm">
+					</f:ajax>
+				</h:selectOneMenu>
+				
+<!-- End of industry type filtering -->
 
 
 				<table id="tableData" class="table table-striped table-bordered"

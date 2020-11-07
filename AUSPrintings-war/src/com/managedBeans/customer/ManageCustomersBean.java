@@ -29,10 +29,28 @@ public class ManageCustomersBean implements Serializable {
 
 	private List<Customer> customers;
 	private List<Agent> staffs;
+	private List<IndustryType> industryTypes;
 	private int selectedStaffId = 0;
+	private int selectedIndustryTypeId =0;
 	
+	public int getSelectedIndustryTypeId() {
+		return selectedIndustryTypeId;
+	}
+
+	public void setSelectedIndustryTypeId(int selectedIndustryTypeId) {
+		this.selectedIndustryTypeId = selectedIndustryTypeId;
+	}
+
 	public int getSelectedStaffId() {
 		return selectedStaffId;
+	}
+
+	public List<IndustryType> getIndustryTypes() {
+		return industryTypes;
+	}
+
+	public void setIndustryTypes(List<IndustryType> industryTypes) {
+		this.industryTypes = industryTypes;
 	}
 
 	public void setSelectedStaffId(int selectedStaffId) {
@@ -91,6 +109,7 @@ public class ManageCustomersBean implements Serializable {
 		
 		//To get all Staffs;
 		this.staffs = managedBeanRepository.getAllStaff();
+		this.industryTypes = managedBeanRepository.getAllIndustryTypes();
 
 	}
 
@@ -116,6 +135,7 @@ public class ManageCustomersBean implements Serializable {
 		
 	}
 	
+	/*
 	public void updateCustomersFromDB(String agentId) {
 
 		if(Integer.parseInt(agentId) != 0) {
@@ -125,11 +145,28 @@ public class ManageCustomersBean implements Serializable {
 			this.isAdmin = true;
 			this.isUserAdmin = "true";
 		}
-		}else {
-			updateCustomersFromDB();
+		
+	}else {
+		updateCustomersFromDB();
+	}
+	}*/
+	
+	public void updateCustomersFromDB(String agentId, String industryTypeId) {
+				
+		if(Integer.parseInt(agentId) == 0) {
+			this.customers = managedBeanRepository.getCustomers(Integer.parseInt(agentId), "admin", Integer.parseInt(industryTypeId));
+		}
+		else
+		{
+			Agent staff = managedBeanRepository.getAgentFromId(Integer.parseInt(agentId));
+			this.customers = managedBeanRepository.getCustomers(Integer.parseInt(agentId), staff.getRole(), Integer.parseInt(industryTypeId));
 		}
 		
+		
+		
 	}
+	
+	
 
 	public Customer convertManagedBeantoEntity(CustomerBean customerManagedBean) {
 		Customer customer = new Customer(); // Entity
@@ -195,7 +232,15 @@ public class ManageCustomersBean implements Serializable {
 
 		// Following method is to update customers list to see in manage contacts after
 		// adding customer;
-		updateCustomersFromDB(String.valueOf(selectedStaffId));
+		//updateCustomersFromDB(String.valueOf(selectedStaffId));
+		
+		if(isAdmin == true) {
+			updateCustomersFromDB();
+		}
+		else {
+			updateCustomersFromDB(String.valueOf(selectedStaffId), String.valueOf(selectedIndustryTypeId));
+		}
+		
 
 		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
 				new FacesMessage("New Customer added succesfully"));
@@ -204,8 +249,13 @@ public class ManageCustomersBean implements Serializable {
 	public void editCustomer(Customer c) {
 		managedBeanRepository.editCustomer(c);
 
-		updateCustomersFromDB(String.valueOf(selectedStaffId));
-
+		//updateCustomersFromDB(String.valueOf(selectedStaffId));
+		if(isAdmin == true) {
+			updateCustomersFromDB();
+		}
+		else {
+		updateCustomersFromDB(String.valueOf(selectedStaffId), String.valueOf(selectedIndustryTypeId));
+		}
 		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
 				new FacesMessage("Changes saved succesfully"));
 	}
@@ -226,8 +276,13 @@ public class ManageCustomersBean implements Serializable {
 
 		managedBeanRepository.deleteCustomer(customer);
 
-		updateCustomersFromDB(String.valueOf(selectedStaffId));
-
+		//updateCustomersFromDB(String.valueOf(selectedStaffId));
+		if(isAdmin == true) {
+			updateCustomersFromDB();
+		}
+		else {
+		updateCustomersFromDB(String.valueOf(selectedStaffId), String.valueOf(selectedIndustryTypeId));
+		}
 		FacesContext.getCurrentInstance().addMessage("addForm:formMessage",
 				new FacesMessage("Customer deleted succesfully"));
 

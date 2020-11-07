@@ -115,5 +115,10 @@ public class ManagedBeanRepository implements Serializable {
 		adminRepository.updateCustomerStaffAllocation(customer);
 	}
 	
+	public List<Customer> getCustomers(int agentId, String role, int industryTypeId){
+		List<Customer> customers = customerRepository.getCustomer(agentId, role, industryTypeId);
+		return customers;
+	}
+	
 	
 }
